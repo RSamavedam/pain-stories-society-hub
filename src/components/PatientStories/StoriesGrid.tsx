@@ -68,14 +68,14 @@ const StoriesGrid = ({ stories, openPopoverId, setOpenPopoverId }: StoriesGridPr
             opts={{
               loop: true,
               align: "center",
-              containScroll: "trimSnaps"
+              slidesToScroll: 1
             }}
           >
-            <CarouselContent className="-ml-2 md:-ml-4">
+            <CarouselContent>
               {stories.map((story) => (
                 <CarouselItem 
                   key={story.id} 
-                  className="pl-2 md:pl-4 basis-3/4 md:basis-1/3 lg:basis-1/3"
+                  className="basis-full"
                 >
                   <div className="p-1">
                     <div className="flex flex-col items-center justify-center">
