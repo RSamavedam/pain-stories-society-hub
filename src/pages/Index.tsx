@@ -23,7 +23,7 @@ const Index = () => {
               delay={300}
               className="mb-6"
             >
-              <h1 className="font-serif text-4xl md:text-5xl font-bold text-pain-900 leading-tight">
+              <h1 className="font-serif text-4xl md:text-5xl font-bold text-sage-800 leading-tight">
                 Information. Stories. Hope.
               </h1>
             </AnimatedSection>
@@ -33,7 +33,7 @@ const Index = () => {
               delay={500}
               className="mb-8"
             >
-              <p className="text-lg md:text-xl text-pain-800">
+              <p className="text-lg md:text-xl text-sage-700">
                 Spreading knowledge about rare pain conditions - because informed care starts with informed patients
               </p>
             </AnimatedSection>
@@ -53,10 +53,10 @@ const Index = () => {
               delay={900}
             >
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild size="lg" className="bg-pain-600 hover:bg-pain-700 rounded-full">
+                <Button asChild size="lg" className="bg-sage-600 hover:bg-sage-700 rounded-full">
                   <Link to="/patient-stories">Read Patient Stories</Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="border-pain-600 text-pain-600 hover:bg-pain-50 rounded-full">
+                <Button asChild variant="outline" size="lg" className="border-lavender-500 text-lavender-600 hover:bg-lavender-50 rounded-full">
                   <Link to="/pain-conditions">Learn About Conditions</Link>
                 </Button>
               </div>
@@ -67,20 +67,20 @@ const Index = () => {
 
       {/* Patient quote section - adds a human voice */}
       <AnimatedSection 
-        className="py-12 bg-pain-50/50"
+        className="py-12 bg-lavender-50/50"
         animationType="fade-in"
         duration={1000}
       >
         <div className="container">
           <div className="max-w-4xl mx-auto">
             <blockquote className="relative text-center px-10">
-              <div className="text-pain-300 text-6xl font-serif absolute top-0 left-0">"</div>
-              <p className="text-xl md:text-2xl italic text-pain-800 mb-6">
+              <div className="text-lavender-300 text-6xl font-serif absolute top-0 left-0">"</div>
+              <p className="text-xl md:text-2xl italic text-sage-800 mb-6">
                 Finding a community that understands my journey with chronic pain has made all the difference. 
                 It's not just about managing symptoms—it's about being seen and heard.
               </p>
-              <cite className="text-pain-600 font-medium">— Michelle, living with fibromyalgia</cite>
-              <div className="text-pain-300 text-6xl font-serif absolute bottom-0 right-0">"</div>
+              <cite className="text-sage-600 font-medium">— Michelle, living with fibromyalgia</cite>
+              <div className="text-lavender-300 text-6xl font-serif absolute bottom-0 right-0">"</div>
             </blockquote>
           </div>
         </div>
@@ -105,18 +105,18 @@ const Index = () => {
             baseDelay={200}
             animationType="fade-up"
           >
-            <Card className="border-pain-100 shadow-sm hover:shadow-md transition-shadow">
+            <Card className="border-sage-100 shadow-sm hover:shadow-md transition-shadow">
               <CardContent className="p-8 text-center">
                 <div className="mb-4 flex justify-center">
-                  <div className="rounded-full bg-pain-50 p-3">
-                    <BookUser className="h-6 w-6 text-pain-600" />
+                  <div className="rounded-full bg-sage-50 p-3">
+                    <BookUser className="h-6 w-6 text-sage-600" />
                   </div>
                 </div>
                 <h3 className="font-serif text-xl font-medium mb-3">Pain Conditions</h3>
                 <p className="text-muted-foreground mb-5">
                   Clear, accessible information about various chronic pain conditions, written with input from both medical professionals and patients who live with these conditions.
                 </p>
-                <Link to="/pain-conditions" className="text-pain-600 hover:underline font-medium inline-flex items-center">
+                <Link to="/pain-conditions" className="text-sage-600 hover:underline font-medium inline-flex items-center">
                   Learn more
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1">
                     <path d="M5 12h14"></path>
@@ -126,18 +126,18 @@ const Index = () => {
               </CardContent>
             </Card>
             
-            <Card className="border-pain-100 shadow-sm hover:shadow-md transition-shadow">
+            <Card className="border-sage-100 shadow-sm hover:shadow-md transition-shadow">
               <CardContent className="p-8 text-center">
                 <div className="mb-4 flex justify-center">
-                  <div className="rounded-full bg-pain-50 p-3">
-                    <Pill className="h-6 w-6 text-pain-600" />
+                  <div className="rounded-full bg-sage-50 p-3">
+                    <Pill className="h-6 w-6 text-sage-600" />
                   </div>
                 </div>
                 <h3 className="font-serif text-xl font-medium mb-3">Treatments</h3>
                 <p className="text-muted-foreground mb-5">
                   Explore various treatment approaches, from conventional medical therapies to complementary practices, all shared with real patient perspectives on what has helped.
                 </p>
-                <Link to="/treatments" className="text-pain-600 hover:underline font-medium inline-flex items-center">
+                <Link to="/treatments" className="text-sage-600 hover:underline font-medium inline-flex items-center">
                   Learn more
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1">
                     <path d="M5 12h14"></path>
@@ -147,18 +147,18 @@ const Index = () => {
               </CardContent>
             </Card>
             
-            <Card className="border-pain-100 shadow-sm hover:shadow-md transition-shadow">
+            <Card className="border-sage-100 shadow-sm hover:shadow-md transition-shadow">
               <CardContent className="p-8 text-center">
                 <div className="mb-4 flex justify-center">
-                  <div className="rounded-full bg-pain-50 p-3">
-                    <Users className="h-6 w-6 text-pain-600" />
+                  <div className="rounded-full bg-sage-50 p-3">
+                    <Users className="h-6 w-6 text-sage-600" />
                   </div>
                 </div>
                 <h3 className="font-serif text-xl font-medium mb-3">Patient Stories</h3>
                 <p className="text-muted-foreground mb-5">
                   Authentic accounts from individuals navigating life with chronic pain, offering valuable insights, coping strategies, and moments of hope and resilience.
                 </p>
-                <Link to="/patient-stories" className="text-pain-600 hover:underline font-medium inline-flex items-center">
+                <Link to="/patient-stories" className="text-sage-600 hover:underline font-medium inline-flex items-center">
                   Learn more
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1">
                     <path d="M5 12h14"></path>
@@ -173,7 +173,7 @@ const Index = () => {
 
       {/* Featured story section with more human details */}
       <AnimatedSection 
-        className="py-16 bg-pain-50/50" 
+        className="py-16 bg-lavender-50/50" 
         animationType="fade-in"
       >
         <div className="container">
@@ -187,8 +187,8 @@ const Index = () => {
                 <CardContent className="p-8 md:p-10">
                   <AnimatedSection animationType="fade-up" delay={400} className="mb-6">
                     <div className="flex items-center">
-                      <div className="rounded-full bg-pain-100 w-16 h-16 flex items-center justify-center">
-                        <span className="font-medium text-pain-700 text-xl">JD</span>
+                      <div className="rounded-full bg-lavender-100 w-16 h-16 flex items-center justify-center">
+                        <span className="font-medium text-lavender-700 text-xl">JD</span>
                       </div>
                       <div className="ml-4">
                         <h3 className="font-medium text-lg">Jane Doe</h3>
@@ -204,7 +204,7 @@ const Index = () => {
                   </AnimatedSection>
                   
                   <AnimatedSection animationType="fade-up" delay={800}>
-                    <Link to="/patient-stories/jane-doe" className="text-pain-600 hover:underline font-medium inline-flex items-center">
+                    <Link to="/patient-stories/jane-doe" className="text-sage-600 hover:underline font-medium inline-flex items-center">
                       Read Jane's full story
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1">
                         <path d="M5 12h14"></path>
@@ -228,7 +228,7 @@ const Index = () => {
         <div className="container text-center">
           <div className="max-w-2xl mx-auto">
             <AnimatedSection animationType="scale-up" className="mb-6">
-              <HandHeart className="h-12 w-12 text-pain-600 mx-auto" />
+              <HandHeart className="h-12 w-12 text-lavender-600 mx-auto" />
             </AnimatedSection>
             
             <AnimatedSection animationType="fade-up" delay={200} className="mb-4">
@@ -243,10 +243,10 @@ const Index = () => {
             
             <AnimatedSection animationType="fade-up" delay={600}>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild size="lg" className="bg-pain-600 hover:bg-pain-700 rounded-full">
+                <Button asChild size="lg" className="bg-sage-600 hover:bg-sage-700 rounded-full">
                   <Link to="/contact">Get Involved</Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="border-pain-600 text-pain-600 hover:bg-pain-50 rounded-full">
+                <Button asChild variant="outline" size="lg" className="border-lavender-500 text-lavender-600 hover:bg-lavender-50 rounded-full">
                   <Link to="/about">Learn About Us</Link>
                 </Button>
               </div>

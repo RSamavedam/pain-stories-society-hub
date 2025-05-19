@@ -35,11 +35,25 @@ export default function AnimatedSection({
   };
 
   const animationClasses = animations[animationType] || animations['fade-up'];
+  const sectionRef = React.useRef<HTMLDivElement>(null);
+  
+  // Combine refs
+  const setRefs = (element: HTMLDivElement | null) => {
+    const { current: scrollAnimationRef } = ref as React.MutableRefObject<HTMLDivElement | null>;
+    if (scrollAnimationRef) {
+      if (typeof scrollAnimationRef === 'function') {
+        (scrollAnimationRef as (element: HTMLDivElement | null) => void)(element);
+      } else {
+        // @ts-ignore - assigning to a ref
+        ref.current = element;
+      }
+    }
+    sectionRef.current = element;
+  };
 
   return (
     <div
-      //@ts-ignore - ref is correctly typed but TS doesn't recognize it
-      ref={ref}
+      ref={setRefs}
       className={cn(
         className,
         animationClasses,

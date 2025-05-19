@@ -44,10 +44,26 @@ export default function PieceByPiece({
     }
   }, [state]);
 
+  // Use a ref that's properly typed for the div container
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  
+  // Combine both refs
+  const setRefs = (element: HTMLDivElement | null) => {
+    const { current: scrollAnimationRef } = ref as React.MutableRefObject<HTMLDivElement | null>;
+    if (scrollAnimationRef) {
+      if (typeof scrollAnimationRef === 'function') {
+        (scrollAnimationRef as (element: HTMLDivElement | null) => void)(element);
+      } else {
+        // @ts-ignore - assigning to a ref
+        ref.current = element;
+      }
+    }
+    containerRef.current = element;
+  };
+
   return (
     <div
-      //@ts-ignore - ref is correctly typed but TS doesn't recognize it
-      ref={ref}
+      ref={setRefs}
       className={cn(className)}
     >
       {Children.map(children, (child, index) => {
@@ -57,6 +73,7 @@ export default function PieceByPiece({
         const element = child as ReactElement;
         
         return cloneElement(element, {
+          ...element.props,
           className: cn(
             element.props.className,
             animationClasses,
