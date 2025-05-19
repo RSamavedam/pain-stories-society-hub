@@ -1,9 +1,9 @@
 import Layout from "@/components/Layout";
 import { Card, CardContent } from "@/components/ui/card";
-import { Heart } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import PieceByPiece from "@/components/PieceByPiece";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import Logo from "@/components/Logo";
 
 const About = () => {
   const team = [
@@ -62,7 +62,7 @@ const About = () => {
             animationType="scale-up"
             delay={200}
           >
-            <Heart className="h-12 w-12 text-cream-600 mr-3" />
+            <Logo size="large" className="mr-3" />
             <h2 className="font-serif text-3xl font-bold text-brown">Our Mission</h2>
           </AnimatedSection>
           
