@@ -39,14 +39,11 @@ export default function AnimatedSection({
   
   // Combine refs
   const setRefs = (element: HTMLDivElement | null) => {
-    const { current: scrollAnimationRef } = ref as React.MutableRefObject<HTMLDivElement | null>;
-    if (scrollAnimationRef) {
-      if (typeof scrollAnimationRef === 'function') {
-        (scrollAnimationRef as (element: HTMLDivElement | null) => void)(element);
-      } else {
-        // @ts-ignore - assigning to a ref
-        ref.current = element;
-      }
+    if (ref.current !== null && typeof ref.current === 'object') {
+      // @ts-ignore - assigning to a ref
+      ref.current = element;
+    } else if (typeof ref.current === 'function') {
+      ref.current(element);
     }
     sectionRef.current = element;
   };

@@ -49,14 +49,11 @@ export default function PieceByPiece({
   
   // Combine both refs
   const setRefs = (element: HTMLDivElement | null) => {
-    const { current: scrollAnimationRef } = ref as React.MutableRefObject<HTMLDivElement | null>;
-    if (scrollAnimationRef) {
-      if (typeof scrollAnimationRef === 'function') {
-        (scrollAnimationRef as (element: HTMLDivElement | null) => void)(element);
-      } else {
-        // @ts-ignore - assigning to a ref
-        ref.current = element;
-      }
+    if (ref.current !== null && typeof ref.current === 'object') {
+      // @ts-ignore - assigning to a ref
+      ref.current = element;
+    } else if (typeof ref.current === 'function') {
+      ref.current(element);
     }
     containerRef.current = element;
   };
@@ -69,24 +66,30 @@ export default function PieceByPiece({
       {Children.map(children, (child, index) => {
         if (!isValidElement(child)) return child;
         
-        // Explicitly type the child as ReactElement to handle props properly
+        // Explicitly type the child as ReactElement
         const element = child as ReactElement;
         
-        return cloneElement(element, {
-          ...element.props,
-          className: cn(
-            element.props.className,
-            animationClasses,
-            shouldAnimate && 'transition-all opacity-100 translate-y-0 translate-x-0 scale-100'
-          ),
-          style: {
-            ...element.props.style,
-            transitionProperty: 'opacity, transform',
-            transitionDuration: `${duration}ms`,
-            transitionDelay: `${shouldAnimate ? baseDelay + index * staggerDelay : 0}ms`,
-            transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
-          },
-        });
+        // Make sure we're not modifying the props of non-DOM elements
+        if (typeof element.type === 'string') {
+          return cloneElement(element, {
+            ...element.props,
+            className: cn(
+              element.props.className,
+              animationClasses,
+              shouldAnimate && 'transition-all opacity-100 translate-y-0 translate-x-0 scale-100'
+            ),
+            style: {
+              ...element.props.style,
+              transitionProperty: 'opacity, transform',
+              transitionDuration: `${duration}ms`,
+              transitionDelay: `${shouldAnimate ? baseDelay + index * staggerDelay : 0}ms`,
+              transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
+            },
+          });
+        }
+        
+        // For custom components, just return them as is
+        return element;
       })}
     </div>
   );
