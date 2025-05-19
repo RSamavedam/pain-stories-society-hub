@@ -11,6 +11,7 @@ import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
 // Define TypeScript interfaces for our data structures
 interface Condition {
@@ -78,7 +79,7 @@ const PatientStories = () => {
         initials: "JD"
       },
     ],
-    "Fibromyalgia and Chronic Pain": [
+    "Fibromyalgia": [
       {
         id: "john-smith",
         name: "John Smith",
@@ -120,9 +121,10 @@ const PatientStories = () => {
     ],
   };
 
-  const filteredConditions = conditions.filter(condition =>
-    condition.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // Get corresponding condition for each story category
+  const getConditionForCategory = (category: string): Condition | undefined => {
+    return conditions.find(condition => condition.name === category) || undefined;
+  };
 
   const filteredStories = Object.fromEntries(
     Object.entries(stories).map(([category, categoryStories]) => [
@@ -183,7 +185,7 @@ const PatientStories = () => {
           <Tabs defaultValue="stories" className="w-full mb-8">
             <TabsList className="w-full max-w-md mx-auto">
               <TabsTrigger value="stories" className="flex-1">Patient Stories</TabsTrigger>
-              <TabsTrigger value="conditions" className="flex-1">Pain Conditions</TabsTrigger>
+              <TabsTrigger value="treatments" className="flex-1">Treatments</TabsTrigger>
             </TabsList>
             
             <TabsContent value="stories" className="mt-6">
@@ -192,186 +194,237 @@ const PatientStories = () => {
                   <p className="text-lg text-cream-700">No stories match your search. Please try different terms.</p>
                 </AnimatedSection>
               ) : (
-                Object.entries(filteredStories).map(([category, categoryStories], categoryIndex) => (
-                  <AnimatedSection 
-                    key={category} 
-                    className="mb-24 relative"
-                    animationType="fade-up"
-                    delay={categoryIndex * 200}
-                  >
-                    <Card className="border border-cream-200 bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-md mb-10">
-                      <div className="border-b border-cream-100 py-6 px-8">
-                        <h2 className="font-serif text-3xl font-bold text-cream-800">{category}</h2>
-                      </div>
-                      
-                      <div className="p-8">
-                        <div className="relative min-h-[520px]">
-                          <PieceByPiece 
-                            className="relative w-full"
-                            staggerDelay={300}
-                            baseDelay={100}
-                            animationType="fade-in"
-                          >
-                            {categoryStories.map((story, index) => {
-                              // Create a more organic scattered effect with varied positioning
-                              const positions = [
-                                "top-[5%] left-[15%] rotate-[-2deg]",
-                                "top-[15%] right-[20%] rotate-[1deg]",
-                                "bottom-[10%] left-[25%] rotate-[2deg]",
-                                "bottom-[5%] right-[15%] rotate-[-1deg]",
-                                "top-[40%] left-[50%] translate-x-[-50%] rotate-[1deg]",
-                              ];
-                              
-                              const position = positions[index % positions.length];
-                              
-                              return (
-                                <div 
-                                  key={story.id}
-                                  className={`absolute ${position} transform hover:-translate-y-3 hover:rotate-0 transition-all duration-500`}
+                Object.entries(filteredStories).map(([category, categoryStories], categoryIndex) => {
+                  const condition = getConditionForCategory(category);
+                  
+                  return (
+                    <AnimatedSection 
+                      key={category} 
+                      className="mb-24 relative"
+                      animationType="fade-up"
+                      delay={categoryIndex * 200}
+                    >
+                      <Card className="border border-cream-200 bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-md mb-10">
+                        <div className="border-b border-cream-100 py-6 px-8 flex justify-between items-center">
+                          <h2 className="font-serif text-3xl font-bold text-cream-800">{category}</h2>
+                          
+                          {condition && (
+                            <Collapsible className="w-full max-w-lg">
+                              <CollapsibleTrigger asChild>
+                                <Button 
+                                  variant="ghost" 
+                                  size="sm" 
+                                  className="text-cream-600 hover:text-cream-800 hover:bg-cream-100"
                                 >
-                                  <Popover 
-                                    open={openPopoverId === story.id} 
-                                    onOpenChange={(open) => {
-                                      if (open) {
-                                        setOpenPopoverId(story.id);
-                                      } else if (openPopoverId === story.id) {
-                                        setOpenPopoverId(null);
-                                      }
-                                    }}
+                                  {expandedCondition === condition.id ? "Hide Details" : "About This Condition"}
+                                </Button>
+                              </CollapsibleTrigger>
+                              
+                              <CollapsibleContent className="mt-4 space-y-3 animate-accordion-down">
+                                <div className="bg-cream-50/80 p-4 rounded-lg border border-cream-100">
+                                  <p className="text-cream-700 font-medium mb-2">{condition.description}</p>
+                                  <p className="text-cream-600 mb-4">{condition.details}</p>
+                                  
+                                  <div className="mt-4">
+                                    <h4 className="font-medium text-cream-800 mb-2">Helpful Resources:</h4>
+                                    <ul className="list-disc pl-5 space-y-1">
+                                      {condition.resources.map((resource, idx) => (
+                                        <li key={idx} className="text-cream-600">{resource}</li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                </div>
+                              </CollapsibleContent>
+                            </Collapsible>
+                          )}
+                        </div>
+                        
+                        <div className="p-8">
+                          <div className="relative min-h-[520px]">
+                            <PieceByPiece 
+                              className="relative w-full"
+                              staggerDelay={300}
+                              baseDelay={100}
+                              animationType="fade-in"
+                            >
+                              {categoryStories.map((story, index) => {
+                                // Create a more organic scattered effect with varied positioning
+                                const positions = [
+                                  "top-[5%] left-[15%] rotate-[-2deg]",
+                                  "top-[15%] right-[20%] rotate-[1deg]",
+                                  "bottom-[10%] left-[25%] rotate-[2deg]",
+                                  "bottom-[5%] right-[15%] rotate-[-1deg]",
+                                  "top-[40%] left-[50%] translate-x-[-50%] rotate-[1deg]",
+                                ];
+                                
+                                const position = positions[index % positions.length];
+                                
+                                return (
+                                  <div 
+                                    key={story.id}
+                                    className={`absolute ${position} transform hover:-translate-y-3 hover:rotate-0 transition-all duration-500`}
                                   >
-                                    <div className="text-center relative">
-                                      <PopoverTrigger asChild>
-                                        <div 
-                                          className="relative cursor-pointer"
-                                          onMouseEnter={() => setOpenPopoverId(story.id)}
-                                          onMouseLeave={() => setOpenPopoverId(null)}
-                                        >
-                                          <Avatar className="w-52 h-52 border-4 border-white mx-auto shadow-xl group-hover:shadow-2xl transition-all duration-300">
-                                            <AvatarImage src={story.image} alt={story.name} className="object-cover" />
-                                            <AvatarFallback className="text-3xl bg-cream-100 text-cream-700">{story.initials}</AvatarFallback>
-                                          </Avatar>
-                                          <div className="absolute inset-0 rounded-full bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                        </div>
-                                      </PopoverTrigger>
-
-                                      <Link to={`/patient-stories/${story.id}`} className="group cursor-pointer block mt-4">
-                                        <div className="bg-white/80 backdrop-blur-sm p-3 rounded-xl shadow-md border border-cream-100 transform group-hover:translate-y-1 transition-transform">
-                                          <p className="font-medium text-lg text-cream-800">{story.name}</p>
-                                        </div>
-                                      </Link>
-
-                                      <PopoverContent 
-                                        className="w-96 p-6 z-50 backdrop-blur-lg bg-white/95 border border-cream-200 shadow-xl rounded-xl" 
-                                        side="bottom" 
-                                        align="center" 
-                                        sideOffset={20}
-                                      >
-                                        <div className="space-y-4">
-                                          <div className="flex items-center gap-4">
-                                            <Avatar className="w-14 h-14 border-2 border-cream-200">
-                                              <AvatarImage src={story.image} alt={story.name} />
-                                              <AvatarFallback className="text-lg">{story.initials}</AvatarFallback>
+                                    <Popover 
+                                      open={openPopoverId === story.id} 
+                                      onOpenChange={(open) => {
+                                        if (open) {
+                                          setOpenPopoverId(story.id);
+                                        } else if (openPopoverId === story.id) {
+                                          setOpenPopoverId(null);
+                                        }
+                                      }}
+                                    >
+                                      <div className="text-center relative">
+                                        <PopoverTrigger asChild>
+                                          <div 
+                                            className="relative cursor-pointer"
+                                            onMouseEnter={() => setOpenPopoverId(story.id)}
+                                            onMouseLeave={() => setOpenPopoverId(null)}
+                                          >
+                                            <Avatar className="w-52 h-52 border-4 border-white mx-auto shadow-xl group-hover:shadow-2xl transition-all duration-300">
+                                              <AvatarImage src={story.image} alt={story.name} className="object-cover" />
+                                              <AvatarFallback className="text-3xl bg-cream-100 text-cream-700">{story.initials}</AvatarFallback>
                                             </Avatar>
-                                            <div>
-                                              <h3 className="font-serif font-medium text-xl text-cream-900">{story.name}</h3>
-                                              <p className="text-sm font-medium text-muted-foreground">{story.condition}</p>
+                                            <div className="absolute inset-0 rounded-full bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                          </div>
+                                        </PopoverTrigger>
+
+                                        <Link to={`/patient-stories/${story.id}`} className="group cursor-pointer block mt-4">
+                                          <div className="bg-white/80 backdrop-blur-sm p-3 rounded-xl shadow-md border border-cream-100 transform group-hover:translate-y-1 transition-transform">
+                                            <p className="font-medium text-lg text-cream-800">{story.name}</p>
+                                          </div>
+                                        </Link>
+
+                                        <PopoverContent 
+                                          className="w-96 p-6 z-50 backdrop-blur-lg bg-white/95 border border-cream-200 shadow-xl rounded-xl" 
+                                          side="bottom" 
+                                          align="center" 
+                                          sideOffset={20}
+                                        >
+                                          <div className="space-y-4">
+                                            <div className="flex items-center gap-4">
+                                              <Avatar className="w-14 h-14 border-2 border-cream-200">
+                                                <AvatarImage src={story.image} alt={story.name} />
+                                                <AvatarFallback className="text-lg">{story.initials}</AvatarFallback>
+                                              </Avatar>
+                                              <div>
+                                                <h3 className="font-serif font-medium text-xl text-cream-900">{story.name}</h3>
+                                                <p className="text-sm font-medium text-muted-foreground">{story.condition}</p>
+                                              </div>
+                                            </div>
+                                            <p className="text-cream-800 leading-relaxed italic border-l-4 border-cream-200 pl-4 py-1">{story.snippet}</p>
+                                            <div className="flex justify-between items-center pt-2">
+                                              <p className="text-xs text-muted-foreground">{story.date}</p>
+                                              <Link 
+                                                to={`/patient-stories/${story.id}`}
+                                                className="text-sm font-medium text-cream-700 hover:text-cream-900 inline-flex items-center group"
+                                              >
+                                                Read full story
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1 transition-transform group-hover:translate-x-1">
+                                                  <path d="M5 12h14"></path>
+                                                  <path d="m12 5 7 7-7 7"></path>
+                                                </svg>
+                                              </Link>
                                             </div>
                                           </div>
-                                          <p className="text-cream-800 leading-relaxed italic border-l-4 border-cream-200 pl-4 py-1">{story.snippet}</p>
-                                          <div className="flex justify-between items-center pt-2">
-                                            <p className="text-xs text-muted-foreground">{story.date}</p>
-                                            <Link 
-                                              to={`/patient-stories/${story.id}`}
-                                              className="text-sm font-medium text-cream-700 hover:text-cream-900 inline-flex items-center group"
-                                            >
-                                              Read full story
-                                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1 transition-transform group-hover:translate-x-1">
-                                                <path d="M5 12h14"></path>
-                                                <path d="m12 5 7 7-7 7"></path>
-                                              </svg>
-                                            </Link>
-                                          </div>
-                                        </div>
-                                      </PopoverContent>
-                                    </div>
-                                  </Popover>
-                                </div>
-                              );
-                            })}
-                          </PieceByPiece>
+                                        </PopoverContent>
+                                      </div>
+                                    </Popover>
+                                  </div>
+                                );
+                              })}
+                            </PieceByPiece>
+                          </div>
                         </div>
-                      </div>
-                    </Card>
-                  </AnimatedSection>
-                ))
+                      </Card>
+                    </AnimatedSection>
+                  );
+                })
               )}
             </TabsContent>
             
-            <TabsContent value="conditions" className="mt-6">
-              {filteredConditions.length === 0 ? (
-                <AnimatedSection animationType="fade-in" className="text-center p-8 bg-cream-50 rounded-lg">
-                  <p className="text-lg text-cream-700">No conditions match your search. Please try different terms.</p>
-                </AnimatedSection>
-              ) : (
-                <PieceByPiece 
-                  className="grid grid-cols-1 md:grid-cols-2 gap-6"
-                  staggerDelay={150}
-                  animationType="fade-up"
-                >
-                  {filteredConditions.map((condition) => (
-                    <Card 
-                      key={condition.id} 
-                      className={`border-cream-200 transition-all duration-300 hover:shadow-md ${
-                        expandedCondition === condition.id ? "bg-cream-50" : "bg-white"
-                      }`}
-                    >
-                      <CardHeader className="cursor-pointer" onClick={() => toggleExpand(condition.id)}>
-                        <CardTitle className="font-serif text-cream-800 flex justify-between items-center">
-                          {condition.name}
-                          <Button 
-                            variant="ghost" 
-                            size="sm" 
-                            className="text-cream-600 hover:text-cream-800 hover:bg-cream-100"
-                          >
-                            {expandedCondition === condition.id ? "Show Less" : "Read More"}
-                          </Button>
-                        </CardTitle>
-                        <CardDescription className="text-cream-600">{condition.description}</CardDescription>
-                      </CardHeader>
-                      <CardContent>
-                        {expandedCondition === condition.id && (
-                          <div className="animate-fade-in space-y-4">
-                            <p className="text-cream-700">{condition.details}</p>
-                            <div className="mt-4">
-                              <h4 className="font-medium text-cream-800 mb-2">Helpful Resources:</h4>
-                              <ul className="list-disc pl-5 space-y-1">
-                                {condition.resources.map((resource, idx) => (
-                                  <li key={idx} className="text-cream-600">{resource}</li>
-                                ))}
-                              </ul>
-                            </div>
-                            <div className="flex gap-2 mt-4">
-                              <Button 
-                                className="bg-cream-600 hover:bg-cream-700 text-white"
-                                size="sm"
-                              >
-                                Find Support
-                              </Button>
-                              <Button 
-                                variant="outline" 
-                                size="sm"
-                                className="border-cream-600 text-cream-600 hover:bg-cream-50"
-                              >
-                                Share Your Experience
-                              </Button>
-                            </div>
-                          </div>
-                        )}
-                      </CardContent>
-                    </Card>
-                  ))}
-                </PieceByPiece>
-              )}
+            <TabsContent value="treatments" className="mt-6">
+              <PieceByPiece 
+                className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                staggerDelay={150}
+                animationType="fade-up"
+              >
+                <Card className="border-cream-200 bg-white transition-all duration-300 hover:shadow-md">
+                  <CardHeader>
+                    <CardTitle className="font-serif text-cream-800">Physical Therapy</CardTitle>
+                    <CardDescription className="text-cream-600">
+                      Targeted exercises to improve strength, flexibility and mobility for pain reduction.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-cream-700">
+                      Physical therapy focuses on specific movement patterns and exercises designed to address 
+                      the underlying causes of chronic pain conditions. Therapists work with patients to develop
+                      personalized programs that gradually build tolerance and improve function.
+                    </p>
+                    <Button className="mt-4 bg-cream-600 hover:bg-cream-700 text-white" size="sm">
+                      Learn More
+                    </Button>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-cream-200 bg-white transition-all duration-300 hover:shadow-md">
+                  <CardHeader>
+                    <CardTitle className="font-serif text-cream-800">Pain Management Techniques</CardTitle>
+                    <CardDescription className="text-cream-600">
+                      Multimodal approaches combining medication, therapy, and lifestyle adjustments.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-cream-700">
+                      Comprehensive pain management involves coordinated care from specialists who understand
+                      the complex nature of chronic pain. Treatment plans typically incorporate medication management,
+                      interventional procedures, psychological support, and complementary therapies.
+                    </p>
+                    <Button className="mt-4 bg-cream-600 hover:bg-cream-700 text-white" size="sm">
+                      Learn More
+                    </Button>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-cream-200 bg-white transition-all duration-300 hover:shadow-md">
+                  <CardHeader>
+                    <CardTitle className="font-serif text-cream-800">Mind-Body Approaches</CardTitle>
+                    <CardDescription className="text-cream-600">
+                      Meditation, mindfulness, and cognitive behavioral therapy for pain relief.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-cream-700">
+                      Mind-body techniques help patients develop awareness of the connection between thoughts,
+                      emotions, and physical sensations. Research shows these approaches can significantly reduce
+                      pain intensity and improve quality of life by addressing the psychological aspects of pain.
+                    </p>
+                    <Button className="mt-4 bg-cream-600 hover:bg-cream-700 text-white" size="sm">
+                      Learn More
+                    </Button>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-cream-200 bg-white transition-all duration-300 hover:shadow-md">
+                  <CardHeader>
+                    <CardTitle className="font-serif text-cream-800">Emerging Treatments</CardTitle>
+                    <CardDescription className="text-cream-600">
+                      New technologies and research-backed approaches for chronic pain conditions.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-cream-700">
+                      The field of pain management continues to evolve with innovative treatments including
+                      neuromodulation, regenerative medicine, and targeted drug delivery systems. These cutting-edge
+                      approaches offer hope for patients who haven't responded to conventional therapies.
+                    </p>
+                    <Button className="mt-4 bg-cream-600 hover:bg-cream-700 text-white" size="sm">
+                      Learn More
+                    </Button>
+                  </CardContent>
+                </Card>
+              </PieceByPiece>
             </TabsContent>
           </Tabs>
           
