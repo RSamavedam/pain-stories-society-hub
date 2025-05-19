@@ -3,7 +3,7 @@ import { useState } from "react";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Condition } from "@/types/PatientStories";
+import { Condition, StoryCategories } from "@/types/PatientStories";
 import { conditions, stories } from "@/data/patientStoriesData";
 import PageHeader from "@/components/PatientStories/PageHeader";
 import SearchBar from "@/components/PatientStories/SearchBar";
@@ -21,7 +21,7 @@ const PatientStories = () => {
     return conditions.find(condition => condition.name === category) || undefined;
   };
 
-  const filteredStories = Object.fromEntries(
+  const filteredStories: StoryCategories = Object.fromEntries(
     Object.entries(stories).map(([category, categoryStories]) => [
       category,
       categoryStories.filter(story =>
