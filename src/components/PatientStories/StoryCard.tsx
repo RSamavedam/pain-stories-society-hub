@@ -10,12 +10,15 @@ interface StoryCardProps {
   position: string;
   openPopoverId: string | null;
   setOpenPopoverId: (id: string | null) => void;
+  isCarousel?: boolean;
 }
 
-const StoryCard = ({ story, position, openPopoverId, setOpenPopoverId }: StoryCardProps) => {
+const StoryCard = ({ story, position, openPopoverId, setOpenPopoverId, isCarousel = false }: StoryCardProps) => {
   return (
     <div
-      className={`absolute ${position} transform hover:-translate-y-3 hover:rotate-0 transition-all duration-500`}
+      className={`${isCarousel ? "" : "absolute"} ${position} transform ${
+        isCarousel ? "" : "hover:-translate-y-3 hover:rotate-0"
+      } transition-all duration-500`}
     >
       <Popover
         open={openPopoverId === story.id}
@@ -34,7 +37,11 @@ const StoryCard = ({ story, position, openPopoverId, setOpenPopoverId }: StoryCa
               onMouseEnter={() => setOpenPopoverId(story.id)}
               onMouseLeave={() => setOpenPopoverId(null)}
             >
-              <Avatar className="w-64 h-64 border-4 border-white mx-auto shadow-xl group-hover:shadow-2xl transition-all duration-300">
+              <Avatar 
+                className={`${
+                  isCarousel ? "w-72 h-72" : "w-64 h-64"
+                } border-4 border-white mx-auto shadow-xl group-hover:shadow-2xl transition-all duration-300`}
+              >
                 <AvatarImage src={story.image} alt={story.name} className="object-cover" />
                 <AvatarFallback className="text-4xl bg-cream-100 text-cream-700">{story.initials}</AvatarFallback>
               </Avatar>
