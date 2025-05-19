@@ -1,11 +1,9 @@
-
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import AnimatedSection from "@/components/AnimatedSection";
 import PieceByPiece from "@/components/PieceByPiece";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { Card } from "@/components/ui/card";
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
 
@@ -132,24 +130,37 @@ const PatientStories = () => {
                             key={story.id}
                             className={`absolute ${position} transform hover:-translate-y-3 hover:rotate-0 transition-all duration-500`}
                           >
+                            <Link to={`/patient-stories/${story.id}`} className="group cursor-pointer block">
+                              <div className="text-center relative">
+                                <div className="relative">
+                                  <Avatar className="w-52 h-52 border-4 border-white mx-auto shadow-xl group-hover:shadow-2xl transition-all duration-300">
+                                    <AvatarImage src={story.image} alt={story.name} className="object-cover" />
+                                    <AvatarFallback className="text-3xl bg-cream-100 text-cream-700">{story.initials}</AvatarFallback>
+                                  </Avatar>
+                                  <div className="absolute inset-0 rounded-full bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                </div>
+                                <div className="mt-4 bg-white/80 backdrop-blur-sm p-3 rounded-xl shadow-md border border-cream-100 transform group-hover:translate-y-1 transition-transform">
+                                  <p className="font-medium text-lg text-cream-800">{story.name}</p>
+                                </div>
+                              </div>
+                            </Link>
+
                             <Popover>
                               <PopoverTrigger asChild>
-                                <Link to={`/patient-stories/${story.id}`} className="group cursor-pointer block">
-                                  <div className="text-center relative">
-                                    <div className="relative">
-                                      <Avatar className="w-52 h-52 border-4 border-white mx-auto shadow-xl group-hover:shadow-2xl transition-all duration-300">
-                                        <AvatarImage src={story.image} alt={story.name} className="object-cover" />
-                                        <AvatarFallback className="text-3xl bg-cream-100 text-cream-700">{story.initials}</AvatarFallback>
-                                      </Avatar>
-                                      <div className="absolute inset-0 rounded-full bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                    </div>
-                                    <div className="mt-4 bg-white/80 backdrop-blur-sm p-3 rounded-xl shadow-md border border-cream-100 transform group-hover:translate-y-1 transition-transform">
-                                      <p className="font-medium text-lg text-cream-800">{story.name}</p>
-                                    </div>
-                                  </div>
-                                </Link>
+                                <button 
+                                  onClick={(e) => e.preventDefault()}
+                                  className="absolute inset-0 w-full h-full cursor-pointer opacity-0"
+                                  aria-label={`Show details for ${story.name}`}
+                                >
+                                  <span className="sr-only">Show details</span>
+                                </button>
                               </PopoverTrigger>
-                              <PopoverContent className="w-96 p-6 z-50 backdrop-blur-lg bg-white/95 border border-cream-200 shadow-xl rounded-xl" side="bottom" align="center" sideOffset={20}>
+                              <PopoverContent 
+                                className="w-96 p-6 z-50 backdrop-blur-lg bg-white/95 border border-cream-200 shadow-xl rounded-xl" 
+                                side="bottom" 
+                                align="center" 
+                                sideOffset={20}
+                              >
                                 <div className="space-y-4">
                                   <div className="flex items-center gap-4">
                                     <Avatar className="w-14 h-14 border-2 border-cream-200">
