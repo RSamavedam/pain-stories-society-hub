@@ -9,7 +9,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
 import { Input } from "@/components/ui/input";
-import { Search } from "lucide-react";
+import { Search, ChevronDown, ChevronUp } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
@@ -209,35 +209,41 @@ const PatientStories = () => {
                           <h2 className="font-serif text-3xl font-bold text-cream-800">{category}</h2>
                           
                           {condition && (
-                            <Collapsible className="w-full max-w-lg">
-                              <CollapsibleTrigger asChild>
-                                <Button 
-                                  variant="ghost" 
-                                  size="sm" 
-                                  className="text-cream-600 hover:text-cream-800 hover:bg-cream-100"
-                                >
-                                  {expandedCondition === condition.id ? "Hide Details" : "About This Condition"}
-                                </Button>
-                              </CollapsibleTrigger>
-                              
-                              <CollapsibleContent className="mt-4 space-y-3 animate-accordion-down">
-                                <div className="bg-cream-50/80 p-4 rounded-lg border border-cream-100">
-                                  <p className="text-cream-700 font-medium mb-2">{condition.description}</p>
-                                  <p className="text-cream-600 mb-4">{condition.details}</p>
-                                  
-                                  <div className="mt-4">
-                                    <h4 className="font-medium text-cream-800 mb-2">Helpful Resources:</h4>
-                                    <ul className="list-disc pl-5 space-y-1">
-                                      {condition.resources.map((resource, idx) => (
-                                        <li key={idx} className="text-cream-600">{resource}</li>
-                                      ))}
-                                    </ul>
-                                  </div>
-                                </div>
-                              </CollapsibleContent>
-                            </Collapsible>
+                            <CollapsibleTrigger 
+                              onClick={() => toggleExpand(condition.id)}
+                              className="p-2 rounded-full bg-cream-100 hover:bg-cream-200 transition-colors text-cream-700 flex items-center justify-center"
+                            >
+                              {expandedCondition === condition.id ? (
+                                <ChevronUp className="h-5 w-5" />
+                              ) : (
+                                <ChevronDown className="h-5 w-5" />
+                              )}
+                            </CollapsibleTrigger>
                           )}
                         </div>
+                        
+                        {condition && (
+                          <Collapsible 
+                            open={expandedCondition === condition.id}
+                            className="w-full"
+                          >
+                            <CollapsibleContent className="animate-accordion-down">
+                              <div className="bg-cream-50/80 p-6 mx-8 my-6 rounded-lg border border-cream-100">
+                                <p className="text-cream-700 font-medium mb-3">{condition.description}</p>
+                                <p className="text-cream-600 mb-4">{condition.details}</p>
+                                
+                                <div className="mt-4">
+                                  <h4 className="font-medium text-cream-800 mb-2">Helpful Resources:</h4>
+                                  <ul className="list-disc pl-5 space-y-1">
+                                    {condition.resources.map((resource, idx) => (
+                                      <li key={idx} className="text-cream-600">{resource}</li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              </div>
+                            </CollapsibleContent>
+                          </Collapsible>
+                        )}
                         
                         <div className="p-8">
                           <div className="relative min-h-[520px]">
