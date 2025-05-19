@@ -38,8 +38,7 @@ export default function AnimatedSection({
 
   return (
     <div
-      //@ts-ignore - ref is correctly typed but TS doesn't recognize it
-      ref={ref}
+      ref={ref as React.RefObject<HTMLDivElement>}
       className={cn(
         className,
         animationClasses,

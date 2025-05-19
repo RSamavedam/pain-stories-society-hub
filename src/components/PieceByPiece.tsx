@@ -46,8 +46,7 @@ export default function PieceByPiece({
 
   return (
     <div
-      //@ts-ignore - ref is correctly typed but TS doesn't recognize it
-      ref={ref}
+      ref={ref as React.RefObject<HTMLDivElement>}
       className={cn(className)}
     >
       {Children.map(children, (child, index) => {
