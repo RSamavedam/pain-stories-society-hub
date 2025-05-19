@@ -15,7 +15,7 @@ const PageHeader = ({ children }: PageHeaderProps) => {
     >
       <div className="container max-w-6xl">
         <AnimatedSection animationType="fade-up" delay={200} className="mb-6">
-          <h1 className="font-serif text-5xl font-bold text-center bg-gradient-to-r from-cream-900 to-cream-700 bg-clip-text text-transparent">Patient Stories</h1>
+          <h1 className="font-serif text-5xl font-bold text-center text-brown">Patient Stories</h1>
         </AnimatedSection>
         
         <AnimatedSection animationType="fade-up" delay={400}>

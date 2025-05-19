@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -35,7 +34,7 @@ export default function Navigation() {
       <div className="container flex h-16 items-center">
         <div className="flex items-center">
           <Heart className="h-8 w-8 text-pain-600 mr-2" />
-          <Link to="/" className="font-serif font-bold text-xl text-pain-800">
+          <Link to="/" className="font-serif font-bold text-xl text-brown">
             Pain Relief Society
           </Link>
         </div>
