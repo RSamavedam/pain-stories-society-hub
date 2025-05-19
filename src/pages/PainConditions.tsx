@@ -65,10 +65,10 @@ const PainConditions = () => {
 
   return (
     <Layout>
-      <div className="bg-hope-50 py-12">
+      <div className="bg-pain-50 py-12">
         <div className="container">
-          <h1 className="font-serif text-4xl font-bold text-center mb-4 text-hope-800">Pain Conditions</h1>
-          <p className="text-lg text-center max-w-3xl mx-auto text-hope-700">
+          <h1 className="font-serif text-4xl font-bold text-center mb-4 text-pain-800">Pain Conditions</h1>
+          <p className="text-lg text-center max-w-3xl mx-auto text-pain-700">
             Learn about various chronic pain conditions, their symptoms, and how they impact daily life.
           </p>
           
@@ -78,55 +78,55 @@ const PainConditions = () => {
               placeholder="Search conditions..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 border-hope-300 focus:border-hope-500 focus:ring-hope-500"
+              className="pl-10 border-pain-300 focus:border-pain-500 focus:ring-pain-500"
             />
-            <Search className="absolute left-3 top-3 h-4 w-4 text-hope-500" />
+            <Search className="absolute left-3 top-3 h-4 w-4 text-pain-500" />
           </div>
         </div>
       </div>
 
       <div className="container py-12">
         {filteredConditions.length === 0 ? (
-          <div className="text-center p-8 bg-hope-50 rounded-lg">
-            <p className="text-lg text-hope-700">No conditions match your search. Please try different terms.</p>
+          <div className="text-center p-8 bg-pain-50 rounded-lg">
+            <p className="text-lg text-pain-700">No conditions match your search. Please try different terms.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {filteredConditions.map((condition) => (
               <Card 
                 key={condition.id} 
-                className={`border-hope-200 transition-all duration-300 hover:shadow-md ${
-                  expandedCondition === condition.id ? "bg-hope-50" : "bg-white"
+                className={`border-pain-200 transition-all duration-300 hover:shadow-md ${
+                  expandedCondition === condition.id ? "bg-pain-50" : "bg-white"
                 }`}
               >
                 <CardHeader className="cursor-pointer" onClick={() => toggleExpand(condition.id)}>
-                  <CardTitle className="font-serif text-hope-800 flex justify-between items-center">
+                  <CardTitle className="font-serif text-pain-800 flex justify-between items-center">
                     {condition.name}
                     <Button 
                       variant="ghost" 
                       size="sm" 
-                      className="text-hope-600 hover:text-hope-800 hover:bg-hope-100"
+                      className="text-pain-600 hover:text-pain-800 hover:bg-pain-100"
                     >
                       {expandedCondition === condition.id ? "Show Less" : "Read More"}
                     </Button>
                   </CardTitle>
-                  <CardDescription className="text-hope-600">{condition.description}</CardDescription>
+                  <CardDescription className="text-pain-600">{condition.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   {expandedCondition === condition.id && (
                     <div className="animate-fade-in space-y-4">
-                      <p className="text-hope-700">{condition.details}</p>
+                      <p className="text-pain-700">{condition.details}</p>
                       <div className="mt-4">
-                        <h4 className="font-medium text-hope-800 mb-2">Helpful Resources:</h4>
+                        <h4 className="font-medium text-pain-800 mb-2">Helpful Resources:</h4>
                         <ul className="list-disc pl-5 space-y-1">
                           {condition.resources.map((resource, idx) => (
-                            <li key={idx} className="text-hope-600">{resource}</li>
+                            <li key={idx} className="text-pain-600">{resource}</li>
                           ))}
                         </ul>
                       </div>
                       <div className="flex gap-2 mt-4">
                         <Button 
-                          className="bg-hope-600 hover:bg-hope-700 text-white"
+                          className="bg-pain-600 hover:bg-pain-700 text-white"
                           size="sm"
                         >
                           Find Support
@@ -134,7 +134,7 @@ const PainConditions = () => {
                         <Button 
                           variant="outline" 
                           size="sm"
-                          className="border-hope-600 text-hope-600 hover:bg-hope-50"
+                          className="border-pain-600 text-pain-600 hover:bg-pain-50"
                         >
                           Share Your Experience
                         </Button>
@@ -148,11 +148,11 @@ const PainConditions = () => {
         )}
         
         <div className="mt-12 text-center">
-          <p className="text-hope-600 italic">
+          <p className="text-pain-600 italic">
             This information is provided for educational purposes only and should not replace professional medical advice.
           </p>
           <div className="mt-8">
-            <Button className="bg-hope-600 hover:bg-hope-700">
+            <Button className="bg-pain-600 hover:bg-pain-700">
               Connect with Others
             </Button>
           </div>
