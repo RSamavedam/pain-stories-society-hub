@@ -1,8 +1,9 @@
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Heart, Home, Info, Mail, Pill, Users } from "lucide-react";
+import { Home, Info, Mail, Pill, Users } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import {
   NavigationMenu,
@@ -33,7 +34,11 @@ export default function Navigation() {
     <header className="sticky top-0 z-50 w-full bg-white border-b border-pain-100 shadow-sm">
       <div className="container flex h-16 items-center">
         <div className="flex items-center">
-          <Heart className="h-8 w-8 text-pain-600 mr-2" />
+          <img 
+            src="/lovable-uploads/8b6190b9-0102-4469-99cd-988c83ed091d.png" 
+            alt="Pain Relief Society Logo" 
+            className="h-10 w-10 mr-2" 
+          />
           <Link to="/" className="font-serif font-bold text-xl text-brown">
             Pain Relief Society
           </Link>
