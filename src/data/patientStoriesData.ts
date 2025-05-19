@@ -86,35 +86,6 @@ export const stories: StoryCategories = {
       initials: "LC"
     },
   ],
-  "Neurological Pain Conditions": [
-    {
-      id: "emily-johnson",
-      name: "Emily Johnson",
-      condition: "Chronic Migraine",
-      snippet: "I've had migraines since my teenage years, but they became chronic after college. The pulsating pain, sensitivity to light, and nausea can keep me bedridden for days. I've learned to identify my triggers—certain foods, weather changes, and sleep disruptions. Creating a migraine journal has been crucial in my management plan, along with regular consultations with my neurologist to adjust medications as needed.",
-      date: "February 10, 2025",
-      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80",
-      initials: "EJ"
-    },
-    {
-      id: "michael-brown",
-      name: "Michael Brown",
-      condition: "Ehlers-Danlos Syndrome",
-      snippet: "Being diagnosed with EDS at 35 finally gave me answers to a lifetime of unexplained symptoms. The chronic pain from my hypermobile joints, frequent dislocations, and connective tissue problems affected every aspect of my life. Learning proper bracing techniques, working with physical therapists who understand EDS, and connecting with the EDS community online has provided both practical support and emotional validation I needed for so long.",
-      date: "January 5, 2025",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80",
-      initials: "MB"
-    },
-    {
-      id: "alex-rodriguez",
-      name: "Alex Rodriguez",
-      condition: "Trigeminal Neuralgia",
-      snippet: "They call trigeminal neuralgia 'the suicide disease' because the pain is so severe and debilitating. Mine started with what I thought were dental problems, until the shooting, electric-like pain began affecting the entire right side of my face. After trying several medications, I finally found relief through a microvascular decompression surgery. I'm now passionate about raising awareness about facial pain conditions that are often invisible to others.",
-      date: "March 17, 2025",
-      image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80",
-      initials: "AR"
-    },
-  ],
   "Myalgic Encephalomyelitis/Chronic Fatigue Syndrome (ME/CFS)": [
     {
       id: "david-walsh",

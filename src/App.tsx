@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import PainConditions from "./pages/PainConditions";
 import Treatments from "./pages/Treatments";
 import PatientStories from "./pages/PatientStories";
+import PatientStoryDetail from "./pages/PatientStoryDetail";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
@@ -23,6 +24,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/patient-stories" element={<PatientStories />} />
+          <Route path="/patient-stories/:storyId" element={<PatientStoryDetail />} />
           <Route path="/treatments" element={<Treatments />} />
           <Route path="/pain-conditions" element={<Navigate to="/patient-stories" replace />} />
           <Route path="/about" element={<About />} />
