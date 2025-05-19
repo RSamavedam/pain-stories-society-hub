@@ -29,8 +29,11 @@ const StoriesGrid = ({ stories, openPopoverId, setOpenPopoverId }: StoriesGridPr
     return `top-[${verticalOffset}px] left-[50%] translate-x-[-50%] rotate-[0deg]`;
   });
 
+  // Calculate the container height for mobile - using template literals properly
+  const mobileContainerHeight = stories.length * 280 + 100; // Adding extra padding at bottom
+
   return (
-    <div className={`relative ${isMobile ? `min-h-[${stories.length * 280}px]` : "min-h-[520px]"}`}>
+    <div className={`relative ${isMobile ? `min-h-[${mobileContainerHeight}px]` : "min-h-[520px]"}`}>
       <PieceByPiece 
         className="relative w-full"
         staggerDelay={300}
