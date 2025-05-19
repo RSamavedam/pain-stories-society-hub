@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import Layout from "@/components/Layout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -67,17 +68,17 @@ const PainConditions = () => {
   return (
     <Layout>
       <AnimatedSection 
-        className="bg-cream-50 py-12"
+        className="bg-pain-50 py-12"
         animationType="fade-in"
         duration={800}
       >
         <div className="container">
           <AnimatedSection animationType="fade-up" delay={200} className="mb-4">
-            <h1 className="font-serif text-4xl font-bold text-center text-sage-800">Pain Conditions</h1>
+            <h1 className="font-serif text-4xl font-bold text-center text-pain-800">Pain Conditions</h1>
           </AnimatedSection>
           
           <AnimatedSection animationType="fade-up" delay={400}>
-            <p className="text-lg text-center max-w-3xl mx-auto text-sage-700">
+            <p className="text-lg text-center max-w-3xl mx-auto text-pain-700">
               Learn about various chronic pain conditions, their symptoms, and how they impact daily life.
             </p>
           </AnimatedSection>
@@ -88,55 +89,59 @@ const PainConditions = () => {
               placeholder="Search conditions..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 border-sage-300 focus:border-sage-500 focus:ring-sage-500"
+              className="pl-10 border-pain-300 focus:border-pain-500 focus:ring-pain-500"
             />
-            <Search className="absolute left-3 top-3 h-4 w-4 text-sage-500" />
+            <Search className="absolute left-3 top-3 h-4 w-4 text-pain-500" />
           </AnimatedSection>
         </div>
       </AnimatedSection>
 
       <div className="container py-12">
         {filteredConditions.length === 0 ? (
-          <AnimatedSection animationType="fade-in" className="text-center p-8 bg-cream-50 rounded-lg">
-            <p className="text-lg text-sage-700">No conditions match your search. Please try different terms.</p>
+          <AnimatedSection animationType="fade-in" className="text-center p-8 bg-pain-50 rounded-lg">
+            <p className="text-lg text-pain-700">No conditions match your search. Please try different terms.</p>
           </AnimatedSection>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <PieceByPiece 
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+            staggerDelay={150}
+            animationType="fade-up"
+          >
             {filteredConditions.map((condition) => (
               <Card 
                 key={condition.id} 
-                className={`border-sage-200 transition-all duration-300 hover:shadow-md ${
-                  expandedCondition === condition.id ? "bg-cream-50" : "bg-white"
+                className={`border-pain-200 transition-all duration-300 hover:shadow-md ${
+                  expandedCondition === condition.id ? "bg-pain-50" : "bg-white"
                 }`}
               >
                 <CardHeader className="cursor-pointer" onClick={() => toggleExpand(condition.id)}>
-                  <CardTitle className="font-serif text-sage-800 flex justify-between items-center">
+                  <CardTitle className="font-serif text-pain-800 flex justify-between items-center">
                     {condition.name}
                     <Button 
                       variant="ghost" 
                       size="sm" 
-                      className="text-sage-600 hover:text-sage-800 hover:bg-cream-100"
+                      className="text-pain-600 hover:text-pain-800 hover:bg-pain-100"
                     >
                       {expandedCondition === condition.id ? "Show Less" : "Read More"}
                     </Button>
                   </CardTitle>
-                  <CardDescription className="text-sage-600">{condition.description}</CardDescription>
+                  <CardDescription className="text-pain-600">{condition.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   {expandedCondition === condition.id && (
                     <div className="animate-fade-in space-y-4">
-                      <p className="text-sage-700">{condition.details}</p>
+                      <p className="text-pain-700">{condition.details}</p>
                       <div className="mt-4">
-                        <h4 className="font-medium text-sage-800 mb-2">Helpful Resources:</h4>
+                        <h4 className="font-medium text-pain-800 mb-2">Helpful Resources:</h4>
                         <ul className="list-disc pl-5 space-y-1">
                           {condition.resources.map((resource, idx) => (
-                            <li key={idx} className="text-sage-600">{resource}</li>
+                            <li key={idx} className="text-pain-600">{resource}</li>
                           ))}
                         </ul>
                       </div>
                       <div className="flex gap-2 mt-4">
                         <Button 
-                          className="bg-sage-600 hover:bg-sage-700 text-white"
+                          className="bg-pain-600 hover:bg-pain-700 text-white"
                           size="sm"
                         >
                           Find Support
@@ -144,7 +149,7 @@ const PainConditions = () => {
                         <Button 
                           variant="outline" 
                           size="sm"
-                          className="border-sage-600 text-sage-600 hover:bg-cream-50"
+                          className="border-pain-600 text-pain-600 hover:bg-pain-50"
                         >
                           Share Your Experience
                         </Button>
@@ -154,15 +159,15 @@ const PainConditions = () => {
                 </CardContent>
               </Card>
             ))}
-          </div>
+          </PieceByPiece>
         )}
         
         <AnimatedSection animationType="fade-up" delay={500} className="mt-12 text-center">
-          <p className="text-sage-600 italic">
+          <p className="text-pain-600 italic">
             This information is provided for educational purposes only and should not replace professional medical advice.
           </p>
           <div className="mt-8">
-            <Button className="bg-sage-600 hover:bg-sage-700">
+            <Button className="bg-pain-600 hover:bg-pain-700">
               Connect with Others
             </Button>
           </div>

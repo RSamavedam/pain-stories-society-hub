@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -62,21 +63,19 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Replace the pain (blue) colors with a sage green palette
-				sage: {
-					50: '#f4f7f3',
-					100: '#e6ede4',
-					200: '#cfdcca',
-					300: '#b0c4a8',
-					400: '#8eaa82',
-					500: '#6b8e5f',
-					600: '#57744d',
-					700: '#455c3f',
-					800: '#394b35',
-					900: '#31402e',
-					950: '#1a231a',
+				pain: {
+					50: '#f0f9ff',
+					100: '#e0f2fe',
+					200: '#bae6fd',
+					300: '#7dd3fc',
+					400: '#38bdf8',
+					500: '#0ea5e9',
+					600: '#0284c7',
+					700: '#0369a1',
+					800: '#075985',
+					900: '#0c4a6e',
+					950: '#082f49',
 				},
-				// Keep hope colors (green)
 				hope: {
 					50: '#f0fdf4',
 					100: '#dcfce7',
@@ -90,7 +89,6 @@ export default {
 					900: '#14532d',
 					950: '#052e16',
 				},
-				// Keep cream colors
 				cream: {
 					50: '#fefdf9',
 					100: '#fcf9f0',
@@ -103,20 +101,6 @@ export default {
 					800: '#9a6429',
 					900: '#7e5226',
 					950: '#432a12',
-				},
-				// Add lavender colors which pair nicely with beige/cream
-				lavender: {
-					50: '#f5f3ff',
-					100: '#ede9fe',
-					200: '#ddd6fe',
-					300: '#c4b5fd',
-					400: '#a78bfa',
-					500: '#8b5cf6',
-					600: '#7c3aed',
-					700: '#6d28d9',
-					800: '#5b21b6',
-					900: '#4c1d95',
-					950: '#2e1065',
 				}
 			},
 			borderRadius: {

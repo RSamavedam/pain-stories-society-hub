@@ -35,22 +35,11 @@ export default function AnimatedSection({
   };
 
   const animationClasses = animations[animationType] || animations['fade-up'];
-  const sectionRef = React.useRef<HTMLDivElement>(null);
-  
-  // Combine refs
-  const setRefs = (element: HTMLDivElement | null) => {
-    if (ref.current !== null && typeof ref.current === 'object') {
-      // @ts-ignore - assigning to a ref
-      ref.current = element;
-    } else if (typeof ref.current === 'function') {
-      ref.current(element);
-    }
-    sectionRef.current = element;
-  };
 
   return (
     <div
-      ref={setRefs}
+      //@ts-ignore - ref is correctly typed but TS doesn't recognize it
+      ref={ref}
       className={cn(
         className,
         animationClasses,
