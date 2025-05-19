@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import { Link } from "react-router-dom";
@@ -67,20 +66,20 @@ const Index = () => {
 
       {/* Patient quote section - adds a human voice */}
       <AnimatedSection 
-        className="py-12 bg-pain-50/50"
+        className="py-12 bg-softgray-50/50"
         animationType="fade-in"
         duration={1000}
       >
         <div className="container">
           <div className="max-w-4xl mx-auto">
             <blockquote className="relative text-center px-10">
-              <div className="text-pain-300 text-6xl font-serif absolute top-0 left-0">"</div>
-              <p className="text-xl md:text-2xl italic text-pain-800 mb-6">
-                Finding a community that understands my journey with chronic pain has made all the difference. 
+              <div className="text-softgray-300 text-6xl font-serif absolute top-0 left-0">"</div>
+              <p className="text-xl md:text-2xl italic text-softgray-800 mb-6">
+                Finding a community that understands my journey with rare pain conditions has made all the difference. 
                 It's not just about managing symptoms—it's about being seen and heard.
               </p>
-              <cite className="text-pain-600 font-medium">— Michelle, living with fibromyalgia</cite>
-              <div className="text-pain-300 text-6xl font-serif absolute bottom-0 right-0">"</div>
+              <cite className="text-softgray-600 font-medium">— Michelle, living with fibromyalgia</cite>
+              <div className="text-softgray-300 text-6xl font-serif absolute bottom-0 right-0">"</div>
             </blockquote>
           </div>
         </div>
@@ -173,7 +172,7 @@ const Index = () => {
 
       {/* Featured story section with more human details */}
       <AnimatedSection 
-        className="py-16 bg-pain-50/50" 
+        className="py-16 bg-softgray-50/50" 
         animationType="fade-in"
       >
         <div className="container">
