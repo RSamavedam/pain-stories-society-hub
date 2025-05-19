@@ -38,7 +38,7 @@ const About = () => {
       >
         <div className="container">
           <AnimatedSection animationType="fade-up" delay={200}>
-            <h1 className="font-serif text-4xl font-bold text-center mb-4">About Us</h1>
+            <h1 className="font-serif text-4xl font-bold text-center mb-4 text-brown">About Us</h1>
           </AnimatedSection>
           <AnimatedSection animationType="fade-up" delay={400}>
             <p className="text-lg text-center max-w-3xl mx-auto text-muted-foreground">
@@ -56,7 +56,7 @@ const About = () => {
             delay={200}
           >
             <Heart className="h-12 w-12 text-cream-600 mr-3" />
-            <h2 className="font-serif text-3xl font-bold">Our Mission</h2>
+            <h2 className="font-serif text-3xl font-bold text-brown">Our Mission</h2>
           </AnimatedSection>
           
           <AnimatedSection className="prose prose-lg max-w-none mb-16" animationType="fade-up" delay={400}>
@@ -80,7 +80,7 @@ const About = () => {
           </AnimatedSection>
           
           <AnimatedSection className="mb-8" animationType="fade-up" delay={300}>
-            <h2 className="font-serif text-3xl font-bold text-center">Our Team</h2>
+            <h2 className="font-serif text-3xl font-bold text-center text-brown">Our Team</h2>
           </AnimatedSection>
           
           <PieceByPiece 
@@ -101,7 +101,7 @@ const About = () => {
           </PieceByPiece>
           
           <AnimatedSection className="mb-8" animationType="fade-up" delay={300}>
-            <h2 className="font-serif text-3xl font-bold text-center">Our Values</h2>
+            <h2 className="font-serif text-3xl font-bold text-center text-brown">Our Values</h2>
           </AnimatedSection>
           
           <PieceByPiece 

@@ -48,7 +48,7 @@ const Contact = () => {
     <Layout>
       <div className="bg-pain-50 py-12">
         <div className="container">
-          <h1 className="font-serif text-4xl font-bold text-center mb-4">Contact Us</h1>
+          <h1 className="font-serif text-4xl font-bold text-center mb-4 text-brown">Contact Us</h1>
           <p className="text-lg text-center max-w-3xl mx-auto text-muted-foreground">
             Have questions or want to get involved? We'd love to hear from you.
           </p>
