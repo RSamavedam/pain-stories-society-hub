@@ -3,6 +3,7 @@ import React from "react";
 import PieceByPiece from "@/components/PieceByPiece";
 import { PatientStory } from "@/types/PatientStories";
 import StoryCard from "./StoryCard";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface StoriesGridProps {
   stories: PatientStory[];
@@ -11,6 +12,8 @@ interface StoriesGridProps {
 }
 
 const StoriesGrid = ({ stories, openPopoverId, setOpenPopoverId }: StoriesGridProps) => {
+  const isMobile = useIsMobile();
+
   // Create a more organic scattered effect with varied positioning
   const positions = [
     "top-[5%] left-[15%] rotate-[-2deg]",
@@ -19,9 +22,15 @@ const StoriesGrid = ({ stories, openPopoverId, setOpenPopoverId }: StoriesGridPr
     "bottom-[5%] right-[15%] rotate-[-1deg]",
     "top-[40%] left-[50%] translate-x-[-50%] rotate-[1deg]",
   ];
+  
+  // Mobile positions - vertical layout
+  const mobilePositions = stories.map((_, index) => {
+    const verticalOffset = index * 280; // Height offset for each card
+    return `top-[${verticalOffset}px] left-[50%] translate-x-[-50%] rotate-[0deg]`;
+  });
 
   return (
-    <div className="relative min-h-[520px]">
+    <div className={`relative ${isMobile ? `min-h-[${stories.length * 280}px]` : "min-h-[520px]"}`}>
       <PieceByPiece 
         className="relative w-full"
         staggerDelay={300}
@@ -32,7 +41,7 @@ const StoriesGrid = ({ stories, openPopoverId, setOpenPopoverId }: StoriesGridPr
           <StoryCard
             key={story.id}
             story={story}
-            position={positions[index % positions.length]}
+            position={isMobile ? mobilePositions[index] : positions[index % positions.length]}
             openPopoverId={openPopoverId}
             setOpenPopoverId={setOpenPopoverId}
           />
