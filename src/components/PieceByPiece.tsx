@@ -1,5 +1,5 @@
 
-import React, { ReactNode, useEffect, useState, Children, cloneElement, isValidElement } from 'react';
+import React, { ReactNode, useEffect, useState, Children, cloneElement, isValidElement, ReactElement } from 'react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { cn } from '@/lib/utils';
 
@@ -52,15 +52,18 @@ export default function PieceByPiece({
     >
       {Children.map(children, (child, index) => {
         if (!isValidElement(child)) return child;
-
-        return cloneElement(child, {
+        
+        // Explicitly type the child as ReactElement to handle props properly
+        const element = child as ReactElement;
+        
+        return cloneElement(element, {
           className: cn(
-            child.props.className,
+            element.props.className,
             animationClasses,
             shouldAnimate && 'transition-all opacity-100 translate-y-0 translate-x-0 scale-100'
           ),
           style: {
-            ...child.props.style,
+            ...element.props.style,
             transitionProperty: 'opacity, transform',
             transitionDuration: `${duration}ms`,
             transitionDelay: `${shouldAnimate ? baseDelay + index * staggerDelay : 0}ms`,
