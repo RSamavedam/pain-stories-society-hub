@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import { Link } from "react-router-dom";
@@ -23,7 +24,7 @@ const Index = () => {
               delay={300}
               className="mb-6"
             >
-              <h1 className="font-serif text-4xl md:text-5xl font-bold text-pain-900 leading-tight">
+              <h1 className="font-serif text-4xl md:text-5xl font-bold text-brown leading-tight">
                 Information. Stories. Hope.
               </h1>
             </AnimatedSection>
@@ -69,7 +70,7 @@ const Index = () => {
       <section className="py-16">
         <div className="container">
           <AnimatedSection className="mb-6" animationType="fade-up">
-            <h2 className="font-serif text-3xl font-bold text-center">How We Help</h2>
+            <h2 className="font-serif text-3xl font-bold text-center text-brown">How We Help</h2>
           </AnimatedSection>
           
           <AnimatedSection className="mb-12" animationType="fade-up" delay={200}>
@@ -158,7 +159,7 @@ const Index = () => {
         <div className="container">
           <div className="max-w-4xl mx-auto">
             <AnimatedSection animationType="fade-up" className="mb-8">
-              <h2 className="font-serif text-3xl font-bold text-center">Featured Patient Story</h2>
+              <h2 className="font-serif text-3xl font-bold text-center text-brown">Featured Patient Story</h2>
             </AnimatedSection>
             
             <AnimatedSection animationType="scale-up" delay={200}>
@@ -211,7 +212,7 @@ const Index = () => {
             </AnimatedSection>
             
             <AnimatedSection animationType="fade-up" delay={200} className="mb-4">
-              <h2 className="font-serif text-3xl md:text-4xl font-bold">Join Our Community</h2>
+              <h2 className="font-serif text-3xl md:text-4xl font-bold text-brown">Join Our Community</h2>
             </AnimatedSection>
             
             <AnimatedSection animationType="fade-up" delay={400} className="mb-8">
