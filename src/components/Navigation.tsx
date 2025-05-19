@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Home, Info, Mail, Pill, Users } from "lucide-react";
+import { Heart, Home, Info, Mail, Pill, Users } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import {
   NavigationMenu,
@@ -12,7 +12,6 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import Logo from "./Logo";
 
 // Updated navigation structure
 const mainNavItems = [
@@ -33,7 +32,12 @@ export default function Navigation() {
   return (
     <header className="sticky top-0 z-50 w-full bg-white border-b border-pain-100 shadow-sm">
       <div className="container flex h-16 items-center">
-        <Logo />
+        <div className="flex items-center">
+          <Heart className="h-8 w-8 text-pain-600 mr-2" />
+          <Link to="/" className="font-serif font-bold text-xl text-brown">
+            Pain Relief Society
+          </Link>
+        </div>
         
         <div className="flex-1" />
         

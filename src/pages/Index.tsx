@@ -1,12 +1,12 @@
+
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
-import { BookUser, Pill, Users } from "lucide-react";
+import { HandHeart, BookUser, Pill, Users } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import PieceByPiece from "@/components/PieceByPiece";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import Logo from "@/components/Logo";
 
 const Index = () => {
   return (
@@ -208,7 +208,7 @@ const Index = () => {
         <div className="container text-center">
           <div className="max-w-2xl mx-auto">
             <AnimatedSection animationType="scale-up" className="mb-6">
-              <Logo size="large" className="justify-center" />
+              <HandHeart className="h-12 w-12 text-pain-600 mx-auto" />
             </AnimatedSection>
             
             <AnimatedSection animationType="fade-up" delay={200} className="mb-4">
