@@ -35,4 +35,11 @@ export const teamMembers: TeamMember[] = [
     bio: "Robert oversees our online community and support groups, creating safe spaces for patients and caregivers to connect and share experiences.",
     initials: "RG"
   },
+  {
+    name: "Raghav Samavedam",
+    role: "Technical Advisor",
+    bio: "Raghav is a software engineer with a passion for healthcare technology. He ensures our platform is user-friendly and accessible to all.",
+    image: "/lovable-uploads/raghav.jpeg",
+    initials: "RS"
+  }
 ];
