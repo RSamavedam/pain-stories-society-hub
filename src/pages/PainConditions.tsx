@@ -58,7 +58,7 @@ const PainConditions = () => {
           
           <AnimatedSection animationType="fade-up" delay={400}>
             <p className="text-lg text-center max-w-3xl mx-auto text-pain-700">
-              Learn about various rare chronic pain conditions, their symptoms, and how they impact daily life.
+              Learn about various rare pain conditions, their symptoms, and how they impact daily life.
             </p>
           </AnimatedSection>
           
