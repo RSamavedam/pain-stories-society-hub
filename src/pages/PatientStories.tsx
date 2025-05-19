@@ -7,6 +7,7 @@ import PieceByPiece from "@/components/PieceByPiece";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { Card } from "@/components/ui/card";
+import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
 
 const PatientStories = () => {
   // Group stories by condition type
@@ -107,7 +108,7 @@ const PatientStories = () => {
                 </div>
                 
                 <div className="p-8">
-                  <div className="relative min-h-[420px]">
+                  <div className="relative min-h-[520px]">
                     <PieceByPiece 
                       className="relative w-full"
                       staggerDelay={300}
@@ -131,8 +132,8 @@ const PatientStories = () => {
                             key={story.id}
                             className={`absolute ${position} transform hover:-translate-y-3 hover:rotate-0 transition-all duration-500`}
                           >
-                            <HoverCard openDelay={100} closeDelay={200}>
-                              <HoverCardTrigger asChild>
+                            <Popover>
+                              <PopoverTrigger asChild>
                                 <Link to={`/patient-stories/${story.id}`} className="group cursor-pointer block">
                                   <div className="text-center relative">
                                     <div className="relative">
@@ -147,8 +148,8 @@ const PatientStories = () => {
                                     </div>
                                   </div>
                                 </Link>
-                              </HoverCardTrigger>
-                              <HoverCardContent className="w-96 p-6 z-50 backdrop-blur-lg bg-white/95 border border-cream-200 shadow-xl rounded-xl">
+                              </PopoverTrigger>
+                              <PopoverContent className="w-96 p-6 z-50 backdrop-blur-lg bg-white/95 border border-cream-200 shadow-xl rounded-xl" side="bottom" align="center" sideOffset={20}>
                                 <div className="space-y-4">
                                   <div className="flex items-center gap-4">
                                     <Avatar className="w-14 h-14 border-2 border-cream-200">
@@ -175,8 +176,8 @@ const PatientStories = () => {
                                     </Link>
                                   </div>
                                 </div>
-                              </HoverCardContent>
-                            </HoverCard>
+                              </PopoverContent>
+                            </Popover>
                           </div>
                         );
                       })}
