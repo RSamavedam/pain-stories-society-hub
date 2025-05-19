@@ -42,7 +42,7 @@ const About = () => {
           </AnimatedSection>
           <AnimatedSection animationType="fade-up" delay={400}>
             <p className="text-lg text-center max-w-3xl mx-auto text-muted-foreground">
-              Learn about our mission, team, and commitment to the chronic pain community.
+              Learn about our mission, team, and commitment to this community.
             </p>
           </AnimatedSection>
         </div>
