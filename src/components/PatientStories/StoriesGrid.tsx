@@ -47,11 +47,28 @@ const StoriesGrid = ({ stories, openPopoverId, setOpenPopoverId }: StoriesGridPr
     api.on("select", () => {
       setCurrentIndex(api.selectedScrollSnap());
     });
+
+    // Initialize with the first few items visible
+    api.reInit();
     
     return () => {
       api.off("select");
     };
   }, [api]);
+
+  // Ensure initialization with three stories visible
+  const lastIndex = stories.length - 1;
+  const initialIndex = lastIndex; // Start with the last item to show it as the "previous" item
+
+  useEffect(() => {
+    if (!api) return;
+    
+    // Set initial position to show 3 items with the first one centered
+    setTimeout(() => {
+      api.scrollTo(initialIndex, false);
+      setCurrentIndex(initialIndex);
+    }, 100);
+  }, [api, initialIndex]);
 
   return (
     <div className="relative">
@@ -67,15 +84,16 @@ const StoriesGrid = ({ stories, openPopoverId, setOpenPopoverId }: StoriesGridPr
             setApi={setApi}
             opts={{
               loop: true,
-              align: "center",
-              startIndex: 0,
+              align: "start",
+              containScroll: false,
+              startIndex: initialIndex,
             }}
           >
-            <CarouselContent className="mx-auto max-w-[500px]">
+            <CarouselContent className="mx-auto">
               {stories.map((story, index) => (
                 <CarouselItem 
                   key={story.id} 
-                  className="basis-full"
+                  className="basis-full md:basis-1/3 lg:basis-1/3 px-2"
                 >
                   <div className="p-1">
                     <div className="flex flex-col items-center justify-center">
