@@ -31,11 +31,11 @@ const StoriesGrid = ({ stories, openPopoverId, setOpenPopoverId }: StoriesGridPr
       >
         <div className="py-4">
           <Carousel className="w-full">
-            <CarouselContent>
+            <CarouselContent className={!isMobile ? "mx-auto max-w-[500px]" : ""}>
               {stories.map((story) => (
                 <CarouselItem 
                   key={story.id} 
-                  className={isMobile ? "md:basis-full lg:basis-full" : "basis-1/2 md:basis-1/3 lg:basis-1/4"}
+                  className="basis-full"
                 >
                   <div className="p-1">
                     <div className="flex flex-col items-center justify-center">
