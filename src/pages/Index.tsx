@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import { Link } from "react-router-dom";
@@ -53,12 +52,9 @@ const Index = () => {
               animationType="fade-up"
               delay={900}
             >
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex justify-center">
                 <Button asChild size="lg" className="bg-pain-600 hover:bg-pain-700 rounded-full">
                   <Link to="/patient-stories">Read Patient Stories</Link>
-                </Button>
-                <Button asChild variant="outline" size="lg" className="border-pain-600 text-pain-600 hover:bg-pain-50 rounded-full">
-                  <Link to="/pain-conditions">Learn About Conditions</Link>
                 </Button>
               </div>
             </AnimatedSection>
