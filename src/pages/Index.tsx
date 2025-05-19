@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { HandHeart, BookUser, Pill, Users } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import PieceByPiece from "@/components/PieceByPiece";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 const Index = () => {
   return (
@@ -150,7 +151,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Featured story section with more human details */}
+      {/* Featured story section with Het's image */}
       <AnimatedSection 
         className="py-16 bg-softgray-50/50" 
         animationType="fade-in"
@@ -165,18 +166,20 @@ const Index = () => {
               <Card className="border-none shadow-lg overflow-hidden">
                 <CardContent className="p-8 md:p-10">
                   <AnimatedSection animationType="fade-up" delay={400} className="mb-6">
-                    <div className="flex items-center">
-                      <div className="rounded-full bg-pain-100 w-16 h-16 flex items-center justify-center">
-                        <span className="font-medium text-pain-700 text-xl">H</span>
-                      </div>
-                      <div className="ml-4">
-                        <h3 className="font-medium text-lg">Het</h3>
+                    <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
+                      <Avatar className="w-24 h-24 border-2 border-pain-100">
+                        <AvatarImage src="/lovable-uploads/723aa5ad-402e-426d-9044-bdc0e7e62302.png" alt="Het" className="object-cover" />
+                        <AvatarFallback className="text-xl">H</AvatarFallback>
+                      </Avatar>
+                      <div>
+                        <h3 className="font-medium text-xl mb-1">Het</h3>
+                        <p className="text-muted-foreground">Living with chronic pain</p>
                       </div>
                     </div>
                   </AnimatedSection>
                   
                   <AnimatedSection animationType="fade-up" delay={600} className="mb-6">
-                    <blockquote className="italic text-lg text-muted-foreground leading-relaxed">
+                    <blockquote className="italic text-lg text-muted-foreground leading-relaxed mt-4">
                       "Het experienced excruciating pain in his hands. As a result, he went to a local orthopedic specialist who gave him some pain killers. When those medications didn't help, he was recommended to a rheumatologist who have anti-inflammatory medications and steroids as he was diagnosed with rheumatoid arthritis. Finally, when no doctor could figure out what was wrong, he was diagnosed with having a mental disability because everything seemed to be normal physically."
                     </blockquote>
                   </AnimatedSection>
