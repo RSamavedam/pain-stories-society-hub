@@ -20,8 +20,6 @@ const Contact = () => {
           <div className="lg:col-span-2">
             <Card className="border-pain-100">
               <CardContent className="p-6 md:p-8">
-                <h2 className="font-serif text-2xl font-bold mb-6">Get in Touch</h2>
-                
                 <div className="w-full flex justify-center">
                   <iframe 
                     src="https://docs.google.com/forms/d/e/1FAIpQLSd3gXhP95Rtn6uGtPrCh8cNWfJjI7is99QudblDnFmStT597A/viewform?embedded=true" 
