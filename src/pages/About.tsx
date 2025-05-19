@@ -19,6 +19,7 @@ const About = () => {
       name: "Dr. Trupti Berde",
       role: "Pediatric Physical Therapist, Mumbai, India",
       bio: "Living with CRPS since 2010, Michael brings firsthand experience to our mission. He leads our patient story initiatives and community outreach programs.",
+      image: "/lovable-uploads/7043cc7a-2293-4aae-8557-aa9e330ea76d.png",
       initials: "TB"
     },
     {
