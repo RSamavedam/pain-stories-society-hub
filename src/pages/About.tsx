@@ -3,39 +3,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Heart } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 import PieceByPiece from "@/components/PieceByPiece";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import TeamMemberCard from "@/components/TeamMemberCard";
+import { teamMembers } from "@/data/teamData";
 
 const About = () => {
-  const team = [
-    {
-      name: "Adyant Shankar",
-      role: "Founder and Patient Advocate",
-      bio: "Dr. Johnson is a pain specialist with over 15 years of experience. After witnessing the struggles her patients faced in finding reliable information, she founded the Pain Relief Society.",
-      image: "/lovable-uploads/b41d9902-b757-4166-9a01-e957228e47e1.png",
-      initials: "AS"
-    },
-    {
-      name: "Dr. Trupti Berde",
-      role: "Pediatric Physical Therapist, Mumbai, India",
-      bio: "Living with CRPS since 2010, Michael brings firsthand experience to our mission. He leads our patient story initiatives and community outreach programs.",
-      image: "/lovable-uploads/7043cc7a-2293-4aae-8557-aa9e330ea76d.png",
-      initials: "TB"
-    },
-    {
-      name: "Dr. Raju Khubchandani",
-      role: "Head of Rheumatology, SRCC Children's Hospital, Mumbai, India",
-      bio: "With a background in healthcare education, Emily develops our educational resources and ensures they're accessible to diverse audiences.",
-      image: "/lovable-uploads/783a3b26-ed04-4aa4-b10f-4bbe31f634c2.png",
-      initials: "RK"
-    },
-    {
-      name: "Robert Garcia",
-      role: "Community Manager",
-      bio: "Robert oversees our online community and support groups, creating safe spaces for patients and caregivers to connect and share experiences.",
-      initials: "RG"
-    },
-  ];
-
   return (
     <Layout>
       <AnimatedSection 
@@ -93,25 +64,15 @@ const About = () => {
             baseDelay={200}
             animationType="fade-up"
           >
-            {team.map((member, index) => (
-              <Card key={index} className="border-cream-200">
-                <CardContent className="p-6">
-                  <div className="flex items-center mb-4">
-                    <Avatar className="h-16 w-16 mr-4 border-2 border-cream-200">
-                      {member.image ? (
-                        <AvatarImage src={member.image} alt={member.name} />
-                      ) : (
-                        <AvatarFallback className="bg-cream-100 text-brown text-lg font-medium">{member.initials}</AvatarFallback>
-                      )}
-                    </Avatar>
-                    <div>
-                      <h3 className="font-serif text-xl font-bold mb-1">{member.name}</h3>
-                      <p className="text-cream-700 font-medium">{member.role}</p>
-                    </div>
-                  </div>
-                  <p className="text-muted-foreground">{member.bio}</p>
-                </CardContent>
-              </Card>
+            {teamMembers.map((member, index) => (
+              <TeamMemberCard 
+                key={index}
+                name={member.name}
+                role={member.role}
+                bio={member.bio}
+                image={member.image}
+                initials={member.initials}
+              />
             ))}
           </PieceByPiece>
           
