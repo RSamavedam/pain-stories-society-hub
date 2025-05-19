@@ -1,14 +1,21 @@
 
 import React from "react";
-import { Image, Video, Youtube } from "lucide-react";
-import { ContentBlock, ContentType } from "@/types/PatientStories";
+import { ContentBlock } from "@/types/PatientStories";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 interface StoryContentProps {
-  content: ContentBlock[];
+  content: ContentBlock[] | undefined;
 }
 
 const StoryContent: React.FC<StoryContentProps> = ({ content }) => {
+  if (!content || content.length === 0) {
+    return (
+      <div className="text-lg leading-relaxed text-cream-800 mb-6">
+        <p>No detailed content is available for this story yet.</p>
+      </div>
+    );
+  }
+
   const renderContentBlock = (block: ContentBlock, index: number) => {
     switch (block.type) {
       case "text":

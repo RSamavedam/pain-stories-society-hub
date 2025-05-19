@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/carousel";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Button } from "../ui/button";
+import { ScrollArea } from "../ui/scroll-area";
 
 interface StoriesGridProps {
   stories: PatientStory[];
@@ -22,6 +23,16 @@ interface StoriesGridProps {
 const StoriesGrid = ({ stories, openPopoverId, setOpenPopoverId }: StoriesGridProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [api, setApi] = useState<any>(null);
+
+  // If there are no stories, show a placeholder message
+  if (stories.length === 0) {
+    return (
+      <div className="w-full p-8 text-center bg-cream-50 rounded-lg my-4">
+        <p className="text-cream-700">No stories available in this category yet.</p>
+        <p className="text-cream-600 text-sm mt-2">Check back soon for updates or view other categories.</p>
+      </div>
+    );
+  }
 
   // Handle loop navigation - create a circular carousel effect
   const handlePrevious = useCallback(() => {

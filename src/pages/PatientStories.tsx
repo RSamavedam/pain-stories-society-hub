@@ -19,6 +19,7 @@ const PatientStories = () => {
     return conditions.find(condition => condition.name === category) || undefined;
   };
 
+  // Create a filtered version of stories based on search term
   const filteredStories: StoryCategories = Object.fromEntries(
     Object.entries(stories).map(([category, categoryStories]) => [
       category,
@@ -30,6 +31,10 @@ const PatientStories = () => {
     ]).filter(([_, categoryStories]) => categoryStories.length > 0)
   );
 
+  // Create a list of all conditions, even if they have no stories
+  // This ensures empty categories are displayed
+  const allCategories = conditions.map(condition => condition.name);
+  
   const toggleExpand = (id: number) => {
     setExpandedCondition(expandedCondition === id ? null : id);
   };
@@ -56,8 +61,15 @@ const PatientStories = () => {
               <p className="text-lg text-cream-700">No stories match your search. Please try different terms.</p>
             </AnimatedSection>
           ) : (
-            Object.entries(filteredStories).map(([category, categoryStories], categoryIndex) => {
+            // Display each condition category, even if it has no stories
+            allCategories.map((category, categoryIndex) => {
               const condition = getConditionForCategory(category);
+              const categoryStories = filteredStories[category] || [];
+              
+              // Skip categories that don't match the search when search is active
+              if (searchTerm && categoryStories.length === 0) {
+                return null;
+              }
               
               return (
                 <AnimatedSection 
