@@ -3,7 +3,6 @@ import React, { useState, useCallback, useEffect } from "react";
 import PieceByPiece from "@/components/PieceByPiece";
 import { PatientStory } from "@/types/PatientStories";
 import StoryCard from "./StoryCard";
-import { useIsMobile } from "@/hooks/use-mobile";
 import {
   Carousel,
   CarouselContent,
@@ -11,6 +10,8 @@ import {
   CarouselPrevious,
   CarouselNext,
 } from "@/components/ui/carousel";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { Button } from "../ui/button";
 
 interface StoriesGridProps {
   stories: PatientStory[];
@@ -19,7 +20,6 @@ interface StoriesGridProps {
 }
 
 const StoriesGrid = ({ stories, openPopoverId, setOpenPopoverId }: StoriesGridProps) => {
-  const isMobile = useIsMobile();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [api, setApi] = useState<any>(null);
 
@@ -61,8 +61,15 @@ const StoriesGrid = ({ stories, openPopoverId, setOpenPopoverId }: StoriesGridPr
         baseDelay={100}
         animationType="fade-in"
       >
-        <div className="py-4">
-          <Carousel className="w-full" setApi={setApi}>
+        <div className="py-4 pb-16">
+          <Carousel 
+            className="w-full" 
+            setApi={setApi}
+            opts={{
+              loop: true,
+              align: "center",
+            }}
+          >
             <CarouselContent className="mx-auto max-w-[500px]">
               {stories.map((story) => (
                 <CarouselItem 
@@ -83,17 +90,29 @@ const StoriesGrid = ({ stories, openPopoverId, setOpenPopoverId }: StoriesGridPr
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <div className="flex justify-center gap-2 mt-4">
-              <CarouselPrevious 
-                onClick={handlePrevious} 
-                className="relative static left-0 right-auto translate-y-0" 
-              />
-              <CarouselNext 
-                onClick={handleNext} 
-                className="relative static right-0 left-auto translate-y-0" 
-              />
-            </div>
           </Carousel>
+          
+          {/* Custom navigation buttons positioned at the bottom center */}
+          <div className="flex justify-center mt-6 gap-2">
+            <Button 
+              variant="outline" 
+              size="icon" 
+              className="rounded-full h-10 w-10 border-cream-200"
+              onClick={handlePrevious}
+            >
+              <ArrowLeft className="h-4 w-4" />
+              <span className="sr-only">Previous slide</span>
+            </Button>
+            <Button 
+              variant="outline" 
+              size="icon" 
+              className="rounded-full h-10 w-10 border-cream-200"
+              onClick={handleNext}
+            >
+              <ArrowRight className="h-4 w-4" />
+              <span className="sr-only">Next slide</span>
+            </Button>
+          </div>
         </div>
       </PieceByPiece>
     </div>
