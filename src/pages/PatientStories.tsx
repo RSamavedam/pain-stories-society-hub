@@ -6,6 +6,7 @@ import AnimatedSection from "@/components/AnimatedSection";
 import PieceByPiece from "@/components/PieceByPiece";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
+import { Card } from "@/components/ui/card";
 
 const PatientStories = () => {
   // Group stories by condition type
@@ -65,110 +66,146 @@ const PatientStories = () => {
 
   return (
     <Layout>
-      <AnimatedSection 
-        className="bg-cream-100/70 py-12"
-        animationType="fade-in"
-        duration={800}
-      >
-        <div className="container">
-          <AnimatedSection animationType="fade-up" delay={200} className="mb-4">
-            <h1 className="font-serif text-4xl font-bold text-center">Patient Stories</h1>
-          </AnimatedSection>
-          
-          <AnimatedSection animationType="fade-up" delay={400}>
-            <p className="text-lg text-center max-w-3xl mx-auto text-muted-foreground">
-              Real experiences from people living with chronic pain conditions.
-            </p>
-          </AnimatedSection>
+      <div className="relative overflow-hidden">
+        {/* Background design elements */}
+        <div className="absolute top-0 left-0 w-full h-full -z-10 opacity-10">
+          <div className="absolute top-[20%] left-[10%] w-80 h-80 rounded-full bg-cream-300 blur-3xl"></div>
+          <div className="absolute bottom-[10%] right-[5%] w-64 h-64 rounded-full bg-softgray-300 blur-3xl"></div>
+          <div className="absolute top-[60%] left-[60%] w-96 h-96 rounded-full bg-cream-400 blur-3xl opacity-40"></div>
         </div>
-      </AnimatedSection>
-
-      <div className="container py-12">
-        {Object.entries(stories).map(([category, categoryStories], categoryIndex) => (
-          <AnimatedSection 
-            key={category} 
-            className="mb-16"
-            animationType="fade-up"
-            delay={categoryIndex * 200}
-          >
-            <h2 className="font-serif text-2xl font-bold mb-8 text-center">{category}</h2>
-            
-            <div className="relative min-h-[300px]">
-              <PieceByPiece 
-                className="relative w-full"
-                staggerDelay={300}
-                baseDelay={100}
-                animationType="fade-in"
-              >
-                {categoryStories.map((story, index) => {
-                  // Create a scattered effect using positioning
-                  const positions = [
-                    "top-0 left-[10%]",
-                    "top-[15%] left-[40%]",
-                    "top-[5%] left-[70%]",
-                    "top-[40%] left-[25%]",
-                    "top-[30%] left-[60%]",
-                  ];
-                  
-                  const position = positions[index % positions.length];
-                  
-                  return (
-                    <div 
-                      key={story.id}
-                      className={`absolute ${position} transform hover:-translate-y-2 transition-transform duration-300`}
-                    >
-                      <HoverCard>
-                        <HoverCardTrigger asChild>
-                          <Link to={`/patient-stories/${story.id}`} className="cursor-pointer block">
-                            <div className="text-center">
-                              <Avatar className="w-40 h-40 border-2 border-cream-200 mx-auto shadow-lg">
-                                <AvatarImage src={story.image} alt={story.name} className="object-cover" />
-                                <AvatarFallback className="text-2xl bg-cream-100 text-cream-700">{story.initials}</AvatarFallback>
-                              </Avatar>
-                              <p className="mt-3 font-medium text-lg">{story.name}</p>
-                            </div>
-                          </Link>
-                        </HoverCardTrigger>
-                        <HoverCardContent className="w-80 p-6 z-50 backdrop-blur bg-white/90 border border-cream-200">
-                          <div className="space-y-3">
-                            <h3 className="font-serif font-medium text-lg">{story.name}</h3>
-                            <p className="text-sm font-medium text-muted-foreground">{story.condition}</p>
-                            <p className="text-sm">{story.snippet}</p>
-                            <p className="text-xs text-muted-foreground">{story.date}</p>
-                            <Link 
-                              to={`/patient-stories/${story.id}`}
-                              className="text-sm text-pain-600 hover:underline inline-flex items-center"
-                            >
-                              Read full story
-                              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1">
-                                <path d="M5 12h14"></path>
-                                <path d="m12 5 7 7-7 7"></path>
-                              </svg>
-                            </Link>
-                          </div>
-                        </HoverCardContent>
-                      </HoverCard>
-                    </div>
-                  );
-                })}
-              </PieceByPiece>
-            </div>
-          </AnimatedSection>
-        ))}
         
         <AnimatedSection 
-          className="mt-24 text-center" 
-          animationType="fade-up"
-          delay={600}
+          className="bg-gradient-to-b from-cream-100/90 to-cream-50/60 py-16 backdrop-blur-sm"
+          animationType="fade-in"
+          duration={800}
         >
-          <h3 className="font-serif text-2xl font-bold mb-4">Share Your Story</h3>
-          <p className="text-muted-foreground max-w-2xl mx-auto mb-6">
-            Your experience matters. By sharing your story, you help others feel less alone and contribute to a better understanding of chronic pain conditions.
-          </p>
-          <Button asChild className="bg-cream-600 hover:bg-cream-700 text-foreground">
-            <Link to="/contact">Submit Your Story</Link>
-          </Button>
+          <div className="container max-w-6xl">
+            <AnimatedSection animationType="fade-up" delay={200} className="mb-6">
+              <h1 className="font-serif text-5xl font-bold text-center bg-gradient-to-r from-cream-900 to-cream-700 bg-clip-text text-transparent">Patient Stories</h1>
+            </AnimatedSection>
+            
+            <AnimatedSection animationType="fade-up" delay={400}>
+              <p className="text-xl text-center max-w-3xl mx-auto text-muted-foreground">
+                Real experiences from people living with chronic pain conditions.
+              </p>
+              <div className="w-24 h-1 bg-gradient-to-r from-cream-400 to-cream-600 mx-auto my-6 rounded-full"></div>
+            </AnimatedSection>
+          </div>
         </AnimatedSection>
+
+        <div className="container py-16 max-w-6xl">
+          {Object.entries(stories).map(([category, categoryStories], categoryIndex) => (
+            <AnimatedSection 
+              key={category} 
+              className="mb-24 relative"
+              animationType="fade-up"
+              delay={categoryIndex * 200}
+            >
+              <Card className="border border-cream-200 bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-md mb-10">
+                <div className="border-b border-cream-100 py-6 px-8">
+                  <h2 className="font-serif text-3xl font-bold text-cream-800">{category}</h2>
+                </div>
+                
+                <div className="p-8">
+                  <div className="relative min-h-[420px]">
+                    <PieceByPiece 
+                      className="relative w-full"
+                      staggerDelay={300}
+                      baseDelay={100}
+                      animationType="fade-in"
+                    >
+                      {categoryStories.map((story, index) => {
+                        // Create a more organic scattered effect with varied positioning
+                        const positions = [
+                          "top-[5%] left-[15%] rotate-[-2deg]",
+                          "top-[15%] right-[20%] rotate-[1deg]",
+                          "bottom-[10%] left-[25%] rotate-[2deg]",
+                          "bottom-[5%] right-[15%] rotate-[-1deg]",
+                          "top-[40%] left-[50%] translate-x-[-50%] rotate-[1deg]",
+                        ];
+                        
+                        const position = positions[index % positions.length];
+                        
+                        return (
+                          <div 
+                            key={story.id}
+                            className={`absolute ${position} transform hover:-translate-y-3 hover:rotate-0 transition-all duration-500`}
+                          >
+                            <HoverCard openDelay={100} closeDelay={200}>
+                              <HoverCardTrigger asChild>
+                                <Link to={`/patient-stories/${story.id}`} className="group cursor-pointer block">
+                                  <div className="text-center relative">
+                                    <div className="relative">
+                                      <Avatar className="w-52 h-52 border-4 border-white mx-auto shadow-xl group-hover:shadow-2xl transition-all duration-300">
+                                        <AvatarImage src={story.image} alt={story.name} className="object-cover" />
+                                        <AvatarFallback className="text-3xl bg-cream-100 text-cream-700">{story.initials}</AvatarFallback>
+                                      </Avatar>
+                                      <div className="absolute inset-0 rounded-full bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                    </div>
+                                    <div className="mt-4 bg-white/80 backdrop-blur-sm p-3 rounded-xl shadow-md border border-cream-100 transform group-hover:translate-y-1 transition-transform">
+                                      <p className="font-medium text-lg text-cream-800">{story.name}</p>
+                                    </div>
+                                  </div>
+                                </Link>
+                              </HoverCardTrigger>
+                              <HoverCardContent className="w-96 p-6 z-50 backdrop-blur-lg bg-white/95 border border-cream-200 shadow-xl rounded-xl">
+                                <div className="space-y-4">
+                                  <div className="flex items-center gap-4">
+                                    <Avatar className="w-14 h-14 border-2 border-cream-200">
+                                      <AvatarImage src={story.image} alt={story.name} />
+                                      <AvatarFallback className="text-lg">{story.initials}</AvatarFallback>
+                                    </Avatar>
+                                    <div>
+                                      <h3 className="font-serif font-medium text-xl text-cream-900">{story.name}</h3>
+                                      <p className="text-sm font-medium text-muted-foreground">{story.condition}</p>
+                                    </div>
+                                  </div>
+                                  <p className="text-cream-800 leading-relaxed italic border-l-4 border-cream-200 pl-4 py-1">{story.snippet}</p>
+                                  <div className="flex justify-between items-center pt-2">
+                                    <p className="text-xs text-muted-foreground">{story.date}</p>
+                                    <Link 
+                                      to={`/patient-stories/${story.id}`}
+                                      className="text-sm font-medium text-cream-700 hover:text-cream-900 inline-flex items-center group"
+                                    >
+                                      Read full story
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1 transition-transform group-hover:translate-x-1">
+                                        <path d="M5 12h14"></path>
+                                        <path d="m12 5 7 7-7 7"></path>
+                                      </svg>
+                                    </Link>
+                                  </div>
+                                </div>
+                              </HoverCardContent>
+                            </HoverCard>
+                          </div>
+                        );
+                      })}
+                    </PieceByPiece>
+                  </div>
+                </div>
+              </Card>
+            </AnimatedSection>
+          ))}
+          
+          <AnimatedSection 
+            className="mt-24 text-center relative" 
+            animationType="fade-up"
+            delay={600}
+          >
+            <div className="absolute inset-0 -z-10">
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[120%] h-40 bg-cream-100/50 blur-3xl rounded-full"></div>
+            </div>
+            <Card className="max-w-3xl mx-auto border border-cream-200 bg-white/90 backdrop-blur-sm p-10 rounded-2xl shadow-lg">
+              <h3 className="font-serif text-2xl font-bold mb-4 text-cream-800">Share Your Story</h3>
+              <p className="text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
+                Your experience matters. By sharing your story, you help others feel less alone and contribute to a better understanding of chronic pain conditions.
+              </p>
+              <Button asChild className="bg-cream-600 hover:bg-cream-700 text-white px-8 py-6 text-lg font-medium shadow-md hover:shadow-lg transition-all">
+                <Link to="/contact">Submit Your Story</Link>
+              </Button>
+            </Card>
+          </AnimatedSection>
+        </div>
       </div>
     </Layout>
   );
