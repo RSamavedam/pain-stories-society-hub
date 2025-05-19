@@ -2,13 +2,11 @@
 import { useState } from "react";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Condition, StoryCategories } from "@/types/PatientStories";
 import { conditions, stories } from "@/data/patientStoriesData";
 import PageHeader from "@/components/PatientStories/PageHeader";
 import SearchBar from "@/components/PatientStories/SearchBar";
 import CategoryCard from "@/components/PatientStories/CategoryCard";
-import TreatmentsTab from "@/components/PatientStories/TreatmentsTab";
 import ShareStorySection from "@/components/PatientStories/ShareStorySection";
 
 const PatientStories = () => {
@@ -53,47 +51,34 @@ const PatientStories = () => {
         </PageHeader>
 
         <div className="container py-12 max-w-6xl">
-          <Tabs defaultValue="stories" className="w-full mb-8">
-            <TabsList className="w-full max-w-md mx-auto">
-              <TabsTrigger value="stories" className="flex-1">Patient Stories</TabsTrigger>
-              <TabsTrigger value="treatments" className="flex-1">Treatments</TabsTrigger>
-            </TabsList>
-            
-            <TabsContent value="stories" className="mt-6">
-              {Object.keys(filteredStories).length === 0 ? (
-                <AnimatedSection animationType="fade-in" className="text-center p-8 bg-cream-50 rounded-lg">
-                  <p className="text-lg text-cream-700">No stories match your search. Please try different terms.</p>
+          {Object.keys(filteredStories).length === 0 ? (
+            <AnimatedSection animationType="fade-in" className="text-center p-8 bg-cream-50 rounded-lg">
+              <p className="text-lg text-cream-700">No stories match your search. Please try different terms.</p>
+            </AnimatedSection>
+          ) : (
+            Object.entries(filteredStories).map(([category, categoryStories], categoryIndex) => {
+              const condition = getConditionForCategory(category);
+              
+              return (
+                <AnimatedSection 
+                  key={category} 
+                  className="mb-24 relative"
+                  animationType="fade-up"
+                  delay={categoryIndex * 200}
+                >
+                  <CategoryCard
+                    category={category}
+                    stories={categoryStories}
+                    condition={condition}
+                    expandedCondition={expandedCondition}
+                    toggleExpand={toggleExpand}
+                    openPopoverId={openPopoverId}
+                    setOpenPopoverId={setOpenPopoverId}
+                  />
                 </AnimatedSection>
-              ) : (
-                Object.entries(filteredStories).map(([category, categoryStories], categoryIndex) => {
-                  const condition = getConditionForCategory(category);
-                  
-                  return (
-                    <AnimatedSection 
-                      key={category} 
-                      className="mb-24 relative"
-                      animationType="fade-up"
-                      delay={categoryIndex * 200}
-                    >
-                      <CategoryCard
-                        category={category}
-                        stories={categoryStories}
-                        condition={condition}
-                        expandedCondition={expandedCondition}
-                        toggleExpand={toggleExpand}
-                        openPopoverId={openPopoverId}
-                        setOpenPopoverId={setOpenPopoverId}
-                      />
-                    </AnimatedSection>
-                  );
-                })
-              )}
-            </TabsContent>
-            
-            <TabsContent value="treatments" className="mt-6">
-              <TreatmentsTab />
-            </TabsContent>
-          </Tabs>
+              );
+            })
+          )}
           
           <ShareStorySection />
         </div>
