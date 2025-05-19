@@ -33,8 +33,8 @@ const CategoryCard = ({
         toggleExpand={toggleExpand} 
       />
       
-      <div className="py-1 bg-cream-200">
-        <Separator className="h-1 bg-cream-300" />
+      <div className="py-2">
+        <Separator className="h-0.5 bg-cream-900" />
       </div>
       
       <div className="p-6">
