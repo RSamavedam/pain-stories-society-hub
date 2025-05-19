@@ -21,7 +21,6 @@ const mainNavItems = [
 ];
 
 const resourcesItems = [
-  { name: "Pain Conditions", path: "/pain-conditions", icon: <Book className="h-5 w-5" /> },
   { name: "Treatments", path: "/treatments", icon: <Pill className="h-5 w-5" /> },
 ];
 
@@ -69,7 +68,7 @@ export default function Navigation() {
                 <NavigationMenuTrigger
                   className={cn(
                     "text-sm font-medium transition-colors hover:text-pain-600",
-                    pathname.includes("/pain-conditions") || pathname.includes("/treatments") 
+                    pathname.includes("/treatments") 
                       ? "text-pain-600" 
                       : "text-muted-foreground"
                   )}

@@ -1,14 +1,47 @@
+
+import { useEffect, useState } from "react";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import AnimatedSection from "@/components/AnimatedSection";
 import PieceByPiece from "@/components/PieceByPiece";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { Card } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
-import { useEffect, useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Search } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const PatientStories = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [openPopoverId, setOpenPopoverId] = useState<string | null>(null);
+  const [expandedCondition, setExpandedCondition] = useState<number | null>(null);
+  
+  // Define conditions (from pain-conditions page)
+  const conditions = [
+    {
+      id: 1,
+      name: "Complex Regional Pain Syndrome (CRPS)",
+      description: "A rare and poorly understood chronic pain condition that usually affects an arm or leg after an injury or surgery.",
+      details: "CRPS is characterized by prolonged or excessive pain and changes in skin color, temperature, and swelling. The pain may spread beyond the affected limb and can sometimes migrate to the opposite limb. People with CRPS have a heightened sensitivity to touch and even normal contact can be extremely painful.",
+      resources: ["American CRPS Foundation", "RSDSA - Reflex Sympathetic Dystrophy Association", "CRPS Support Groups"]
+    },
+    {
+      id: 2,
+      name: "Fibromyalgia",
+      description: "A disorder characterized by widespread musculoskeletal pain accompanied by fatigue, sleep, memory and mood issues.",
+      details: "Researchers believe fibromyalgia amplifies painful sensations by affecting the way your brain and spinal cord process painful and nonpainful signals. Symptoms often begin after physical trauma, surgery, infection, or significant psychological stress. Women are more likely to develop fibromyalgia than men.",
+      resources: ["National Fibromyalgia Association", "Fibromyalgia Coalition", "Fibro Community Support"]
+    },
+    {
+      id: 3,
+      name: "Myalgic Encephalomyelitis/Chronic Fatigue Syndrome (ME/CFS)",
+      description: "A serious, long-term illness that affects many body systems, characterized by extreme fatigue that worsens with physical or mental activity.",
+      details: "ME/CFS is a complex, multisystem disease characterized by profound fatigue, post-exertional malaise (PEM), cognitive dysfunction, unrefreshing sleep, and orthostatic intolerance. Many patients report that pain is a significant part of their experience, including headaches, muscle pain, joint pain, and widespread pain. The exact cause remains unknown, though theories include viral infections, immune system problems, and genetic factors. ME/CFS can severely impact quality of life, with 25% of patients housebound or bedbound at some point in their illness.",
+      resources: ["ME Action Network", "Solve ME/CFS Initiative", "International Association for CFS/ME"]
+    },
+  ];
+
   // Group stories by condition type
   const stories = {
     "Complex Regional Pain Syndrome (CRPS)": [
@@ -64,7 +97,24 @@ const PatientStories = () => {
     ],
   };
 
-  const [openPopoverId, setOpenPopoverId] = useState<string | null>(null);
+  const filteredConditions = conditions.filter(condition =>
+    condition.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const filteredStories = Object.fromEntries(
+    Object.entries(stories).map(([category, categoryStories]) => [
+      category,
+      categoryStories.filter(story =>
+        story.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        story.condition.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        story.snippet.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    ]).filter(([_, categoryStories]) => categoryStories.length > 0)
+  );
+
+  const toggleExpand = (id: number) => {
+    setExpandedCondition(expandedCondition === id ? null : id);
+  };
 
   return (
     <Layout>
@@ -92,122 +142,215 @@ const PatientStories = () => {
               </p>
               <div className="w-24 h-1 bg-gradient-to-r from-cream-400 to-cream-600 mx-auto my-6 rounded-full"></div>
             </AnimatedSection>
+            
+            <AnimatedSection animationType="fade-up" delay={600} className="max-w-md mx-auto mt-8 relative">
+              <Input
+                type="text"
+                placeholder="Search conditions & stories..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-10 border-cream-300 focus:border-cream-500 focus:ring-cream-500"
+              />
+              <Search className="absolute left-3 top-3 h-4 w-4 text-cream-500" />
+            </AnimatedSection>
           </div>
         </AnimatedSection>
 
-        <div className="container py-16 max-w-6xl">
-          {Object.entries(stories).map(([category, categoryStories], categoryIndex) => (
-            <AnimatedSection 
-              key={category} 
-              className="mb-24 relative"
-              animationType="fade-up"
-              delay={categoryIndex * 200}
-            >
-              <Card className="border border-cream-200 bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-md mb-10">
-                <div className="border-b border-cream-100 py-6 px-8">
-                  <h2 className="font-serif text-3xl font-bold text-cream-800">{category}</h2>
-                </div>
-                
-                <div className="p-8">
-                  <div className="relative min-h-[520px]">
-                    <PieceByPiece 
-                      className="relative w-full"
-                      staggerDelay={300}
-                      baseDelay={100}
-                      animationType="fade-in"
-                    >
-                      {categoryStories.map((story, index) => {
-                        // Create a more organic scattered effect with varied positioning
-                        const positions = [
-                          "top-[5%] left-[15%] rotate-[-2deg]",
-                          "top-[15%] right-[20%] rotate-[1deg]",
-                          "bottom-[10%] left-[25%] rotate-[2deg]",
-                          "bottom-[5%] right-[15%] rotate-[-1deg]",
-                          "top-[40%] left-[50%] translate-x-[-50%] rotate-[1deg]",
-                        ];
-                        
-                        const position = positions[index % positions.length];
-                        
-                        return (
-                          <div 
-                            key={story.id}
-                            className={`absolute ${position} transform hover:-translate-y-3 hover:rotate-0 transition-all duration-500`}
+        <div className="container py-12 max-w-6xl">
+          <Tabs defaultValue="stories" className="w-full mb-8">
+            <TabsList className="w-full max-w-md mx-auto">
+              <TabsTrigger value="stories" className="flex-1">Patient Stories</TabsTrigger>
+              <TabsTrigger value="conditions" className="flex-1">Pain Conditions</TabsTrigger>
+            </TabsList>
+            
+            <TabsContent value="stories" className="mt-6">
+              {Object.keys(filteredStories).length === 0 ? (
+                <AnimatedSection animationType="fade-in" className="text-center p-8 bg-cream-50 rounded-lg">
+                  <p className="text-lg text-cream-700">No stories match your search. Please try different terms.</p>
+                </AnimatedSection>
+              ) : (
+                Object.entries(filteredStories).map(([category, categoryStories], categoryIndex) => (
+                  <AnimatedSection 
+                    key={category} 
+                    className="mb-24 relative"
+                    animationType="fade-up"
+                    delay={categoryIndex * 200}
+                  >
+                    <Card className="border border-cream-200 bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-md mb-10">
+                      <div className="border-b border-cream-100 py-6 px-8">
+                        <h2 className="font-serif text-3xl font-bold text-cream-800">{category}</h2>
+                      </div>
+                      
+                      <div className="p-8">
+                        <div className="relative min-h-[520px]">
+                          <PieceByPiece 
+                            className="relative w-full"
+                            staggerDelay={300}
+                            baseDelay={100}
+                            animationType="fade-in"
                           >
-                            <Popover 
-                              open={openPopoverId === story.id} 
-                              onOpenChange={(open) => {
-                                if (open) {
-                                  setOpenPopoverId(story.id);
-                                } else if (openPopoverId === story.id) {
-                                  setOpenPopoverId(null);
-                                }
-                              }}
-                            >
-                              <div className="text-center relative">
-                                <PopoverTrigger asChild>
-                                  <div 
-                                    className="relative cursor-pointer"
-                                    onMouseEnter={() => setOpenPopoverId(story.id)}
-                                    onMouseLeave={() => setOpenPopoverId(null)}
-                                  >
-                                    <Avatar className="w-52 h-52 border-4 border-white mx-auto shadow-xl group-hover:shadow-2xl transition-all duration-300">
-                                      <AvatarImage src={story.image} alt={story.name} className="object-cover" />
-                                      <AvatarFallback className="text-3xl bg-cream-100 text-cream-700">{story.initials}</AvatarFallback>
-                                    </Avatar>
-                                    <div className="absolute inset-0 rounded-full bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                  </div>
-                                </PopoverTrigger>
-
-                                <Link to={`/patient-stories/${story.id}`} className="group cursor-pointer block mt-4">
-                                  <div className="bg-white/80 backdrop-blur-sm p-3 rounded-xl shadow-md border border-cream-100 transform group-hover:translate-y-1 transition-transform">
-                                    <p className="font-medium text-lg text-cream-800">{story.name}</p>
-                                  </div>
-                                </Link>
-
-                                <PopoverContent 
-                                  className="w-96 p-6 z-50 backdrop-blur-lg bg-white/95 border border-cream-200 shadow-xl rounded-xl" 
-                                  side="bottom" 
-                                  align="center" 
-                                  sideOffset={20}
+                            {categoryStories.map((story, index) => {
+                              // Create a more organic scattered effect with varied positioning
+                              const positions = [
+                                "top-[5%] left-[15%] rotate-[-2deg]",
+                                "top-[15%] right-[20%] rotate-[1deg]",
+                                "bottom-[10%] left-[25%] rotate-[2deg]",
+                                "bottom-[5%] right-[15%] rotate-[-1deg]",
+                                "top-[40%] left-[50%] translate-x-[-50%] rotate-[1deg]",
+                              ];
+                              
+                              const position = positions[index % positions.length];
+                              
+                              return (
+                                <div 
+                                  key={story.id}
+                                  className={`absolute ${position} transform hover:-translate-y-3 hover:rotate-0 transition-all duration-500`}
                                 >
-                                  <div className="space-y-4">
-                                    <div className="flex items-center gap-4">
-                                      <Avatar className="w-14 h-14 border-2 border-cream-200">
-                                        <AvatarImage src={story.image} alt={story.name} />
-                                        <AvatarFallback className="text-lg">{story.initials}</AvatarFallback>
-                                      </Avatar>
-                                      <div>
-                                        <h3 className="font-serif font-medium text-xl text-cream-900">{story.name}</h3>
-                                        <p className="text-sm font-medium text-muted-foreground">{story.condition}</p>
-                                      </div>
-                                    </div>
-                                    <p className="text-cream-800 leading-relaxed italic border-l-4 border-cream-200 pl-4 py-1">{story.snippet}</p>
-                                    <div className="flex justify-between items-center pt-2">
-                                      <p className="text-xs text-muted-foreground">{story.date}</p>
-                                      <Link 
-                                        to={`/patient-stories/${story.id}`}
-                                        className="text-sm font-medium text-cream-700 hover:text-cream-900 inline-flex items-center group"
-                                      >
-                                        Read full story
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1 transition-transform group-hover:translate-x-1">
-                                          <path d="M5 12h14"></path>
-                                          <path d="m12 5 7 7-7 7"></path>
-                                        </svg>
+                                  <Popover 
+                                    open={openPopoverId === story.id} 
+                                    onOpenChange={(open) => {
+                                      if (open) {
+                                        setOpenPopoverId(story.id);
+                                      } else if (openPopoverId === story.id) {
+                                        setOpenPopoverId(null);
+                                      }
+                                    }}
+                                  >
+                                    <div className="text-center relative">
+                                      <PopoverTrigger asChild>
+                                        <div 
+                                          className="relative cursor-pointer"
+                                          onMouseEnter={() => setOpenPopoverId(story.id)}
+                                          onMouseLeave={() => setOpenPopoverId(null)}
+                                        >
+                                          <Avatar className="w-52 h-52 border-4 border-white mx-auto shadow-xl group-hover:shadow-2xl transition-all duration-300">
+                                            <AvatarImage src={story.image} alt={story.name} className="object-cover" />
+                                            <AvatarFallback className="text-3xl bg-cream-100 text-cream-700">{story.initials}</AvatarFallback>
+                                          </Avatar>
+                                          <div className="absolute inset-0 rounded-full bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                        </div>
+                                      </PopoverTrigger>
+
+                                      <Link to={`/patient-stories/${story.id}`} className="group cursor-pointer block mt-4">
+                                        <div className="bg-white/80 backdrop-blur-sm p-3 rounded-xl shadow-md border border-cream-100 transform group-hover:translate-y-1 transition-transform">
+                                          <p className="font-medium text-lg text-cream-800">{story.name}</p>
+                                        </div>
                                       </Link>
+
+                                      <PopoverContent 
+                                        className="w-96 p-6 z-50 backdrop-blur-lg bg-white/95 border border-cream-200 shadow-xl rounded-xl" 
+                                        side="bottom" 
+                                        align="center" 
+                                        sideOffset={20}
+                                      >
+                                        <div className="space-y-4">
+                                          <div className="flex items-center gap-4">
+                                            <Avatar className="w-14 h-14 border-2 border-cream-200">
+                                              <AvatarImage src={story.image} alt={story.name} />
+                                              <AvatarFallback className="text-lg">{story.initials}</AvatarFallback>
+                                            </Avatar>
+                                            <div>
+                                              <h3 className="font-serif font-medium text-xl text-cream-900">{story.name}</h3>
+                                              <p className="text-sm font-medium text-muted-foreground">{story.condition}</p>
+                                            </div>
+                                          </div>
+                                          <p className="text-cream-800 leading-relaxed italic border-l-4 border-cream-200 pl-4 py-1">{story.snippet}</p>
+                                          <div className="flex justify-between items-center pt-2">
+                                            <p className="text-xs text-muted-foreground">{story.date}</p>
+                                            <Link 
+                                              to={`/patient-stories/${story.id}`}
+                                              className="text-sm font-medium text-cream-700 hover:text-cream-900 inline-flex items-center group"
+                                            >
+                                              Read full story
+                                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1 transition-transform group-hover:translate-x-1">
+                                                <path d="M5 12h14"></path>
+                                                <path d="m12 5 7 7-7 7"></path>
+                                              </svg>
+                                            </Link>
+                                          </div>
+                                        </div>
+                                      </PopoverContent>
                                     </div>
-                                  </div>
-                                </PopoverContent>
-                              </div>
-                            </Popover>
+                                  </Popover>
+                                </div>
+                              );
+                            })}
+                          </PieceByPiece>
+                        </div>
+                      </div>
+                    </Card>
+                  </AnimatedSection>
+                ))
+              )}
+            </TabsContent>
+            
+            <TabsContent value="conditions" className="mt-6">
+              {filteredConditions.length === 0 ? (
+                <AnimatedSection animationType="fade-in" className="text-center p-8 bg-cream-50 rounded-lg">
+                  <p className="text-lg text-cream-700">No conditions match your search. Please try different terms.</p>
+                </AnimatedSection>
+              ) : (
+                <PieceByPiece 
+                  className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                  staggerDelay={150}
+                  animationType="fade-up"
+                >
+                  {filteredConditions.map((condition) => (
+                    <Card 
+                      key={condition.id} 
+                      className={`border-cream-200 transition-all duration-300 hover:shadow-md ${
+                        expandedCondition === condition.id ? "bg-cream-50" : "bg-white"
+                      }`}
+                    >
+                      <CardHeader className="cursor-pointer" onClick={() => toggleExpand(condition.id)}>
+                        <CardTitle className="font-serif text-cream-800 flex justify-between items-center">
+                          {condition.name}
+                          <Button 
+                            variant="ghost" 
+                            size="sm" 
+                            className="text-cream-600 hover:text-cream-800 hover:bg-cream-100"
+                          >
+                            {expandedCondition === condition.id ? "Show Less" : "Read More"}
+                          </Button>
+                        </CardTitle>
+                        <CardDescription className="text-cream-600">{condition.description}</CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        {expandedCondition === condition.id && (
+                          <div className="animate-fade-in space-y-4">
+                            <p className="text-cream-700">{condition.details}</p>
+                            <div className="mt-4">
+                              <h4 className="font-medium text-cream-800 mb-2">Helpful Resources:</h4>
+                              <ul className="list-disc pl-5 space-y-1">
+                                {condition.resources.map((resource, idx) => (
+                                  <li key={idx} className="text-cream-600">{resource}</li>
+                                ))}
+                              </ul>
+                            </div>
+                            <div className="flex gap-2 mt-4">
+                              <Button 
+                                className="bg-cream-600 hover:bg-cream-700 text-white"
+                                size="sm"
+                              >
+                                Find Support
+                              </Button>
+                              <Button 
+                                variant="outline" 
+                                size="sm"
+                                className="border-cream-600 text-cream-600 hover:bg-cream-50"
+                              >
+                                Share Your Experience
+                              </Button>
+                            </div>
                           </div>
-                        );
-                      })}
-                    </PieceByPiece>
-                  </div>
-                </div>
-              </Card>
-            </AnimatedSection>
-          ))}
+                        )}
+                      </CardContent>
+                    </Card>
+                  ))}
+                </PieceByPiece>
+              )}
+            </TabsContent>
+          </Tabs>
           
           <AnimatedSection 
             className="mt-24 text-center relative" 
