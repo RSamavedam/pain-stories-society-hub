@@ -1,4 +1,4 @@
-import { Heart } from "lucide-react";
+
 import { Link } from "react-router-dom";
 
 export default function Footer() {
@@ -8,7 +8,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-3">
             <div className="flex items-center">
-              <Heart className="h-6 w-6 text-pain-600 mr-2" />
+              <img 
+                src="/lovable-uploads/723aa5ad-402e-426d-9044-bdc0e7e62302.png" 
+                alt="Pain Relief Society Logo" 
+                className="h-8 w-8 mr-2" 
+              />
               <span className="font-serif font-bold text-lg text-pain-800">Pain Relief Society</span>
             </div>
             <p className="text-muted-foreground text-sm">
@@ -76,7 +80,14 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-10 border-t border-pain-100 pt-6 text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} Pain Relief Society. All rights reserved.</p>
+          <div className="flex flex-col items-center">
+            <img 
+              src="/lovable-uploads/723aa5ad-402e-426d-9044-bdc0e7e62302.png" 
+              alt="Pain Relief Society Logo" 
+              className="h-10 w-10 mb-3" 
+            />
+            <p>© {new Date().getFullYear()} Pain Relief Society. All rights reserved.</p>
+          </div>
         </div>
       </div>
     </footer>
