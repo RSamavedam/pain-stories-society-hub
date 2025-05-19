@@ -1,49 +1,9 @@
 
-import { useState } from "react";
 import Layout from "@/components/Layout";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MessageSquare, MapPin } from "lucide-react";
-import { useToast } from "@/components/ui/use-toast";
 
 const Contact = () => {
-  const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Normally we would send this data to a server
-    console.log("Form submitted:", formData);
-    
-    toast({
-      title: "Message sent!",
-      description: "We'll get back to you as soon as possible.",
-    });
-    
-    // Clear the form
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    });
-  };
-
   return (
     <Layout>
       <div className="bg-pain-50 py-12">
@@ -62,70 +22,17 @@ const Contact = () => {
               <CardContent className="p-6 md:p-8">
                 <h2 className="font-serif text-2xl font-bold mb-6">Get in Touch</h2>
                 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label htmlFor="name" className="text-sm font-medium">
-                        Your Name
-                      </label>
-                      <Input
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="border-pain-200"
-                      />
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <label htmlFor="email" className="text-sm font-medium">
-                        Your Email
-                      </label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className="border-pain-200"
-                      />
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <label htmlFor="subject" className="text-sm font-medium">
-                      Subject
-                    </label>
-                    <Input
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      required
-                      className="border-pain-200"
-                    />
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-medium">
-                      Your Message
-                    </label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      className="min-h-[150px] border-pain-200"
-                    />
-                  </div>
-                  
-                  <Button type="submit" className="bg-pain-600 hover:bg-pain-700">
-                    Send Message
-                  </Button>
-                </form>
+                <div className="w-full flex justify-center">
+                  <iframe 
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSd3gXhP95Rtn6uGtPrCh8cNWfJjI7is99QudblDnFmStT597A/viewform?embedded=true" 
+                    width="640" 
+                    height="876" 
+                    className="border-0 w-full" 
+                    title="Contact Form"
+                  >
+                    Loading…
+                  </iframe>
+                </div>
               </CardContent>
             </Card>
           </div>
