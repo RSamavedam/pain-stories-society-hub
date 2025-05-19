@@ -1,4 +1,3 @@
-
 import Layout from "@/components/Layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Heart } from "lucide-react";
@@ -26,6 +25,7 @@ const About = () => {
       name: "Dr. Raju Khubchandani",
       role: "Head of Rheumatology, SRCC Children's Hospital, Mumbai, India",
       bio: "With a background in healthcare education, Emily develops our educational resources and ensures they're accessible to diverse audiences.",
+      image: "/lovable-uploads/783a3b26-ed04-4aa4-b10f-4bbe31f634c2.png",
       initials: "RK"
     },
     {
