@@ -41,7 +41,7 @@ const PatientStories = () => {
   return (
     <Layout>
       <AnimatedSection 
-        className="bg-pain-50 py-12"
+        className="bg-cream-100/70 py-12"
         animationType="fade-in"
         duration={800}
       >
@@ -66,7 +66,7 @@ const PatientStories = () => {
           animationType="fade-up"
         >
           {stories.map((story) => (
-            <Card key={story.id} className="border-pain-100">
+            <Card key={story.id} className="border-cream-200">
               <CardHeader>
                 <CardTitle className="font-serif">{story.name}</CardTitle>
                 <CardDescription>{story.condition}</CardDescription>
@@ -76,7 +76,7 @@ const PatientStories = () => {
               </CardContent>
               <CardFooter className="flex justify-between items-center">
                 <span className="text-sm text-muted-foreground">{story.date}</span>
-                <Button asChild variant="outline" className="border-pain-600 text-pain-600 hover:bg-pain-50">
+                <Button asChild variant="outline" className="border-cream-600 text-cream-700 hover:bg-cream-50">
                   <Link to={`/patient-stories/${story.id}`}>Read More</Link>
                 </Button>
               </CardFooter>
@@ -93,7 +93,7 @@ const PatientStories = () => {
           <p className="text-muted-foreground max-w-2xl mx-auto mb-6">
             Your experience matters. By sharing your story, you help others feel less alone and contribute to a better understanding of chronic pain conditions.
           </p>
-          <Button asChild className="bg-pain-600 hover:bg-pain-700">
+          <Button asChild className="bg-cream-600 hover:bg-cream-700 text-foreground">
             <Link to="/contact">Submit Your Story</Link>
           </Button>
         </AnimatedSection>
