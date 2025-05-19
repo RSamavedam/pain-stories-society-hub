@@ -3,6 +3,8 @@ import Layout from "@/components/Layout";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import AnimatedSection from "@/components/AnimatedSection";
+import PieceByPiece from "@/components/PieceByPiece";
 
 const PatientStories = () => {
   const stories = [
@@ -38,17 +40,31 @@ const PatientStories = () => {
 
   return (
     <Layout>
-      <div className="bg-pain-50 py-12">
+      <AnimatedSection 
+        className="bg-pain-50 py-12"
+        animationType="fade-in"
+        duration={800}
+      >
         <div className="container">
-          <h1 className="font-serif text-4xl font-bold text-center mb-4">Patient Stories</h1>
-          <p className="text-lg text-center max-w-3xl mx-auto text-muted-foreground">
-            Real experiences from people living with chronic pain conditions.
-          </p>
+          <AnimatedSection animationType="fade-up" delay={200} className="mb-4">
+            <h1 className="font-serif text-4xl font-bold text-center">Patient Stories</h1>
+          </AnimatedSection>
+          
+          <AnimatedSection animationType="fade-up" delay={400}>
+            <p className="text-lg text-center max-w-3xl mx-auto text-muted-foreground">
+              Real experiences from people living with chronic pain conditions.
+            </p>
+          </AnimatedSection>
         </div>
-      </div>
+      </AnimatedSection>
 
       <div className="container py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <PieceByPiece
+          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          staggerDelay={200}
+          baseDelay={100}
+          animationType="fade-up"
+        >
           {stories.map((story) => (
             <Card key={story.id} className="border-pain-100">
               <CardHeader>
@@ -66,9 +82,13 @@ const PatientStories = () => {
               </CardFooter>
             </Card>
           ))}
-        </div>
+        </PieceByPiece>
         
-        <div className="mt-16 text-center">
+        <AnimatedSection 
+          className="mt-16 text-center" 
+          animationType="fade-up"
+          delay={600}
+        >
           <h3 className="font-serif text-2xl font-bold mb-4">Share Your Story</h3>
           <p className="text-muted-foreground max-w-2xl mx-auto mb-6">
             Your experience matters. By sharing your story, you help others feel less alone and contribute to a better understanding of chronic pain conditions.
@@ -76,7 +96,7 @@ const PatientStories = () => {
           <Button asChild className="bg-pain-600 hover:bg-pain-700">
             <Link to="/contact">Submit Your Story</Link>
           </Button>
-        </div>
+        </AnimatedSection>
       </div>
     </Layout>
   );

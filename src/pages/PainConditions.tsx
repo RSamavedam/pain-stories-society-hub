@@ -5,6 +5,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
+import AnimatedSection from "@/components/AnimatedSection";
+import PieceByPiece from "@/components/PieceByPiece";
 
 const PainConditions = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -65,14 +67,23 @@ const PainConditions = () => {
 
   return (
     <Layout>
-      <div className="bg-pain-50 py-12">
+      <AnimatedSection 
+        className="bg-pain-50 py-12"
+        animationType="fade-in"
+        duration={800}
+      >
         <div className="container">
-          <h1 className="font-serif text-4xl font-bold text-center mb-4 text-pain-800">Pain Conditions</h1>
-          <p className="text-lg text-center max-w-3xl mx-auto text-pain-700">
-            Learn about various chronic pain conditions, their symptoms, and how they impact daily life.
-          </p>
+          <AnimatedSection animationType="fade-up" delay={200} className="mb-4">
+            <h1 className="font-serif text-4xl font-bold text-center text-pain-800">Pain Conditions</h1>
+          </AnimatedSection>
           
-          <div className="max-w-md mx-auto mt-8 relative">
+          <AnimatedSection animationType="fade-up" delay={400}>
+            <p className="text-lg text-center max-w-3xl mx-auto text-pain-700">
+              Learn about various chronic pain conditions, their symptoms, and how they impact daily life.
+            </p>
+          </AnimatedSection>
+          
+          <AnimatedSection animationType="fade-up" delay={600} className="max-w-md mx-auto mt-8 relative">
             <Input
               type="text"
               placeholder="Search conditions..."
@@ -81,17 +92,21 @@ const PainConditions = () => {
               className="pl-10 border-pain-300 focus:border-pain-500 focus:ring-pain-500"
             />
             <Search className="absolute left-3 top-3 h-4 w-4 text-pain-500" />
-          </div>
+          </AnimatedSection>
         </div>
-      </div>
+      </AnimatedSection>
 
       <div className="container py-12">
         {filteredConditions.length === 0 ? (
-          <div className="text-center p-8 bg-pain-50 rounded-lg">
+          <AnimatedSection animationType="fade-in" className="text-center p-8 bg-pain-50 rounded-lg">
             <p className="text-lg text-pain-700">No conditions match your search. Please try different terms.</p>
-          </div>
+          </AnimatedSection>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <PieceByPiece 
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+            staggerDelay={150}
+            animationType="fade-up"
+          >
             {filteredConditions.map((condition) => (
               <Card 
                 key={condition.id} 
@@ -144,10 +159,10 @@ const PainConditions = () => {
                 </CardContent>
               </Card>
             ))}
-          </div>
+          </PieceByPiece>
         )}
         
-        <div className="mt-12 text-center">
+        <AnimatedSection animationType="fade-up" delay={500} className="mt-12 text-center">
           <p className="text-pain-600 italic">
             This information is provided for educational purposes only and should not replace professional medical advice.
           </p>
@@ -156,7 +171,7 @@ const PainConditions = () => {
               Connect with Others
             </Button>
           </div>
-        </div>
+        </AnimatedSection>
       </div>
     </Layout>
   );
