@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import Layout from "@/components/Layout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -28,31 +29,10 @@ const PainConditions = () => {
     },
     {
       id: 3,
-      name: "Trigeminal Neuralgia",
-      description: "A chronic pain condition that affects the trigeminal nerve, which carries sensation from your face to your brain.",
-      details: "Trigeminal neuralgia causes extreme, sporadic, sudden burning or shock-like face pain that can last from a few seconds to about 2 minutes per episode. These attacks can occur in quick succession. The intensity of pain can be physically and mentally incapacitating, often described as some of the most severe pain known to humanity.",
-      resources: ["TNA - The Facial Pain Association", "Trigeminal Neuralgia Support", "Face Pain Research Foundation"]
-    },
-    {
-      id: 4,
-      name: "Ehlers-Danlos Syndromes",
-      description: "A group of disorders that affect connective tissues supporting the skin, bones, blood vessels, and many other organs and tissues.",
-      details: "People with Ehlers-Danlos syndromes usually have overly flexible joints and stretchy, fragile skin. This can lead to chronic pain, frequent dislocations, and early-onset osteoarthritis. Some forms of the condition can also affect blood vessels, potentially leading to serious complications.",
-      resources: ["Ehlers-Danlos Society", "EDS Wellness", "Hypermobility Connect"]
-    },
-    {
-      id: 5,
-      name: "Chronic Migraine",
-      description: "Headaches that occur 15 or more days a month for more than 3 months, with migrainous features on at least 8 days per month.",
-      details: "Chronic migraines cause intense pulsing or throbbing pain, often accompanied by nausea, vomiting, and extreme sensitivity to light and sound. They significantly impact quality of life and ability to perform daily activities. Many sufferers report feeling isolated or misunderstood due to the invisible nature of their condition.",
-      resources: ["American Migraine Foundation", "National Headache Foundation", "Migraine Trust"]
-    },
-    {
-      id: 6,
-      name: "Postherpetic Neuralgia",
-      description: "A complication of shingles, which is caused by the chickenpox (herpes zoster) virus. The condition affects nerve fibers and skin.",
-      details: "Postherpetic neuralgia occurs when damaged nerve fibers send confused and exaggerated messages of pain from your skin to your brain. The pain is often described as burning, stabbing, or shooting, and can persist for months or even years after the shingles rash has healed.",
-      resources: ["Shingles Support Society", "PHN Pain Alliance", "Neuralgia Association"]
+      name: "Myalgic Encephalomyelitis/Chronic Fatigue Syndrome (ME/CFS)",
+      description: "A serious, long-term illness that affects many body systems, characterized by extreme fatigue that worsens with physical or mental activity.",
+      details: "ME/CFS is a complex, multisystem disease characterized by profound fatigue, post-exertional malaise (PEM), cognitive dysfunction, unrefreshing sleep, and orthostatic intolerance. Many patients report that pain is a significant part of their experience, including headaches, muscle pain, joint pain, and widespread pain. The exact cause remains unknown, though theories include viral infections, immune system problems, and genetic factors. ME/CFS can severely impact quality of life, with 25% of patients housebound or bedbound at some point in their illness.",
+      resources: ["ME Action Network", "Solve ME/CFS Initiative", "International Association for CFS/ME"]
     },
   ];
 
@@ -78,7 +58,7 @@ const PainConditions = () => {
           
           <AnimatedSection animationType="fade-up" delay={400}>
             <p className="text-lg text-center max-w-3xl mx-auto text-pain-700">
-              Learn about various chronic pain conditions, their symptoms, and how they impact daily life.
+              Learn about various rare chronic pain conditions, their symptoms, and how they impact daily life.
             </p>
           </AnimatedSection>
           
