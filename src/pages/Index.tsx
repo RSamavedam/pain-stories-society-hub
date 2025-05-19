@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import { Link } from "react-router-dom";
@@ -173,7 +172,6 @@ const Index = () => {
                       </Avatar>
                       <div>
                         <h3 className="font-medium text-xl mb-1">Het</h3>
-                        <p className="text-muted-foreground">Living with chronic pain</p>
                       </div>
                     </div>
                   </AnimatedSection>
