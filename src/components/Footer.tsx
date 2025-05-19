@@ -1,4 +1,3 @@
-
 import { Heart } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -13,7 +12,7 @@ export default function Footer() {
               <span className="font-serif font-bold text-lg text-pain-800">Pain Relief Society</span>
             </div>
             <p className="text-muted-foreground text-sm">
-              Increasing awareness and understanding of chronic pain conditions through patient experiences.
+              Increasing awareness and understanding of rare pain conditions through patient experiences.
             </p>
           </div>
           
