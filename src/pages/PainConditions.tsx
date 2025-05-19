@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Layout from "@/components/Layout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -166,11 +165,6 @@ const PainConditions = () => {
           <p className="text-pain-600 italic">
             This information is provided for educational purposes only and should not replace professional medical advice.
           </p>
-          <div className="mt-8">
-            <Button className="bg-pain-600 hover:bg-pain-700">
-              Connect with Others
-            </Button>
-          </div>
         </AnimatedSection>
       </div>
     </Layout>
