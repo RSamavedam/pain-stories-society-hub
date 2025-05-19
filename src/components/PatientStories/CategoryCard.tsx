@@ -33,7 +33,9 @@ const CategoryCard = ({
         toggleExpand={toggleExpand} 
       />
       
-      <Separator className="bg-cream-100" />
+      <div className="py-1 bg-cream-200">
+        <Separator className="h-1 bg-cream-300" />
+      </div>
       
       <div className="p-6">
         <StoriesGrid 
