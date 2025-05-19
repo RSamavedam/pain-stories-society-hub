@@ -68,10 +68,11 @@ const StoriesGrid = ({ stories, openPopoverId, setOpenPopoverId }: StoriesGridPr
             opts={{
               loop: true,
               align: "center",
+              startIndex: 0,
             }}
           >
             <CarouselContent className="mx-auto max-w-[500px]">
-              {stories.map((story) => (
+              {stories.map((story, index) => (
                 <CarouselItem 
                   key={story.id} 
                   className="basis-full"
