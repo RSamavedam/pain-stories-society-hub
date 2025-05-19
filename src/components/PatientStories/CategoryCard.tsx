@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Card } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import { Condition, PatientStory } from "@/types/PatientStories";
 import ConditionSection from "./ConditionSection";
 import StoriesGrid from "./StoriesGrid";
@@ -32,7 +33,9 @@ const CategoryCard = ({
         toggleExpand={toggleExpand} 
       />
       
-      <div className="p-8">
+      <Separator className="bg-cream-100" />
+      
+      <div className="p-6">
         <StoriesGrid 
           stories={stories} 
           openPopoverId={openPopoverId} 

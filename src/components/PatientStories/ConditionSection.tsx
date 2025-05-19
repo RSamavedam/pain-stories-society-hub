@@ -21,7 +21,7 @@ const ConditionSection = ({ condition }: ConditionSectionProps) => {
           <p className="text-black mb-4">{condition.details}</p>
           
           <div className="mt-4">
-            <h4 className="font-medium text-cream-800 mb-2">Helpful Resources:</h4>
+            <h4 className="font-medium text-black mb-2">Helpful Resources:</h4>
             <ul className="list-disc pl-5 space-y-1">
               {condition.resources.map((resource, idx) => (
                 <li key={idx} className="text-black">{resource}</li>

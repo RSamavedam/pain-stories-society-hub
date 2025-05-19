@@ -34,15 +34,15 @@ const StoryCard = ({ story, position, openPopoverId, setOpenPopoverId }: StoryCa
               onMouseEnter={() => setOpenPopoverId(story.id)}
               onMouseLeave={() => setOpenPopoverId(null)}
             >
-              <Avatar className="w-52 h-52 border-4 border-white mx-auto shadow-xl group-hover:shadow-2xl transition-all duration-300">
+              <Avatar className="w-64 h-64 border-4 border-white mx-auto shadow-xl group-hover:shadow-2xl transition-all duration-300">
                 <AvatarImage src={story.image} alt={story.name} className="object-cover" />
-                <AvatarFallback className="text-3xl bg-cream-100 text-cream-700">{story.initials}</AvatarFallback>
+                <AvatarFallback className="text-4xl bg-cream-100 text-cream-700">{story.initials}</AvatarFallback>
               </Avatar>
               <div className="absolute inset-0 rounded-full bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
           </PopoverTrigger>
 
-          <Link to={`/patient-stories/${story.id}`} className="group cursor-pointer block mt-4">
+          <Link to={`/patient-stories/${story.id}`} className="group cursor-pointer block mt-2">
             <div className="bg-white/80 backdrop-blur-sm p-3 rounded-xl shadow-md border border-cream-100 transform group-hover:translate-y-1 transition-transform">
               <p className="font-medium text-lg text-cream-800">{story.name}</p>
             </div>
