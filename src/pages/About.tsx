@@ -1,4 +1,3 @@
-
 import Layout from "@/components/Layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Heart } from "lucide-react";
@@ -61,13 +60,10 @@ const About = () => {
           
           <AnimatedSection className="prose prose-lg max-w-none mb-16" animationType="fade-up" delay={400}>
             <p>
-              Pain Relief Society aims to increase awareness and understanding of chronic pain conditions by sharing accessible knowledge, amplifying patient stories, and fostering collaborative initiatives between patients, caregivers, and healthcare professionals.
+              Welcome to our non-profit organization page dedicated to raising awareness and providing for individuals affected by Chronic Pain Conditions. Founded by Adyant Shankar, a Stanford Masters student who experienced the challenges of misdiagnosis and suffered through CRPS, and Trupti Berde, a renowned child physical therapist in Mumbai, India, our mission is to educate the community about these conditions.
             </p>
             <p>
-              We believe that visibility, education, and connection are essential steps toward better care and compassionate support for those living with chronic pain.
-            </p>
-            <p>
-              Founded in 2022, our organization grew from a small online support group to a comprehensive resource hub and community for people affected by chronic pain conditions.
+              We strive to empower those living with chronic pain conditions through advocacy and collaboration with healthcare professionals. Together, we aim to improve the lives of those impacted by such rare disorders.
             </p>
             <p>
               Our work is guided by three core principles:
