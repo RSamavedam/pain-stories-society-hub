@@ -7,6 +7,16 @@ export interface Condition {
   resources: string[];
 }
 
+export type ContentType = "text" | "image" | "youtube";
+
+export interface ContentBlock {
+  type: ContentType;
+  content?: string;
+  url?: string;
+  videoId?: string;
+  caption?: string;
+}
+
 export interface PatientStory {
   id: string;
   name: string;
@@ -15,6 +25,7 @@ export interface PatientStory {
   date: string;
   image: string;
   initials: string;
+  content?: ContentBlock[];
 }
 
 export interface StoryCategories {

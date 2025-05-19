@@ -32,21 +32,22 @@ const StoryCard = ({ story, position, openPopoverId, setOpenPopoverId, isCarouse
       >
         <div className="text-center relative">
           <PopoverTrigger asChild>
-            <div
-              className="relative cursor-pointer"
+            <Link
+              to={`/patient-stories/${story.id}`}
+              className="relative cursor-pointer block"
               onMouseEnter={() => setOpenPopoverId(story.id)}
               onMouseLeave={() => setOpenPopoverId(null)}
             >
               <Avatar 
                 className={`${
                   isCarousel ? "w-72 h-72" : "w-64 h-64"
-                } border-4 border-white mx-auto shadow-xl group-hover:shadow-2xl transition-all duration-300`}
+                } border-4 border-white mx-auto shadow-xl hover:shadow-2xl transition-all duration-300`}
               >
                 <AvatarImage src={story.image} alt={story.name} className="object-cover" />
                 <AvatarFallback className="text-4xl bg-cream-100 text-cream-700">{story.initials}</AvatarFallback>
               </Avatar>
-              <div className="absolute inset-0 rounded-full bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </div>
+              <div className="absolute inset-0 rounded-full bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+            </Link>
           </PopoverTrigger>
 
           <Link to={`/patient-stories/${story.id}`} className="group cursor-pointer block mt-2">

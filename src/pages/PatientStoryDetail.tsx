@@ -5,7 +5,8 @@ import { stories } from "@/data/patientStoriesData";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Image, Video, Youtube } from "lucide-react";
+import StoryContent from "@/components/PatientStories/StoryContent";
 
 const PatientStoryDetail = () => {
   const { storyId } = useParams<{ storyId: string }>();
@@ -69,15 +70,23 @@ const PatientStoryDetail = () => {
           
           <Card className="bg-white/80 backdrop-blur-sm border border-cream-200">
             <CardContent className="pt-6">
-              <p className="text-lg leading-relaxed text-cream-800">
+              <p className="text-lg leading-relaxed text-cream-800 mb-6">
                 {story.snippet}
               </p>
-              <p className="mt-4 text-lg leading-relaxed text-cream-800">
-                This is a placeholder for the full story content. In a real application, each patient story would have a complete narrative here about their journey with chronic pain, treatments they've tried, and how they manage their condition.
-              </p>
-              <p className="mt-4 text-lg leading-relaxed text-cream-800">
-                Patient stories serve as powerful tools for both education and emotional support. By sharing their experiences, patients help others understand the daily challenges of living with chronic pain while also providing hope and practical coping strategies.
-              </p>
+              
+              {/* Render story content (text, images, videos) */}
+              {story.content ? (
+                <StoryContent content={story.content} />
+              ) : (
+                <div className="space-y-6">
+                  <p className="text-lg leading-relaxed text-cream-800">
+                    This is a placeholder for the full story content. In a real application, each patient story would have a complete narrative here about their journey with chronic pain, treatments they've tried, and how they manage their condition.
+                  </p>
+                  <p className="text-lg leading-relaxed text-cream-800">
+                    Patient stories serve as powerful tools for both education and emotional support. By sharing their experiences, patients help others understand the daily challenges of living with chronic pain while also providing hope and practical coping strategies.
+                  </p>
+                </div>
+              )}
             </CardContent>
           </Card>
         </div>
