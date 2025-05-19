@@ -38,6 +38,24 @@ export const stories: StoryCategories = {
       image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80",
       initials: "JD"
     },
+    {
+      id: "robert-harris",
+      name: "Robert Harris",
+      condition: "Complex Regional Pain Syndrome (CRPS)",
+      snippet: "After a workplace accident damaged nerves in my right arm, I developed CRPS. The pain was unlike anything I'd experienced before – burning, stabbing, and constant. Through specialized pain management programs and finding support in online communities, I've learned to pace myself and recognize my limits while still maintaining my passion for woodworking using adaptive tools.",
+      date: "March 3, 2025",
+      image: "https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80",
+      initials: "RH"
+    },
+    {
+      id: "sarah-wilson",
+      name: "Sarah Wilson",
+      condition: "Complex Regional Pain Syndrome (CRPS)",
+      snippet: "My journey with CRPS began after a seemingly minor ankle sprain that never healed properly. What followed was years of misdiagnosis before finding a specialist who recognized the telltale signs. Through a combination of ketamine infusions, physical therapy, and mindfulness practices, I've regained some quality of life and now advocate for faster diagnosis for others suffering with similar symptoms.",
+      date: "February 12, 2025",
+      image: "https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80",
+      initials: "SW"
+    },
   ],
   "Fibromyalgia": [
     {
@@ -58,6 +76,15 @@ export const stories: StoryCategories = {
       image: "/lovable-uploads/723aa5ad-402e-426d-9044-bdc0e7e62302.png",
       initials: "H"
     },
+    {
+      id: "lisa-chen",
+      name: "Lisa Chen",
+      condition: "Fibromyalgia",
+      snippet: "As a former marathon runner, being diagnosed with fibromyalgia felt like losing part of my identity. The widespread pain, brain fog, and crushing fatigue forced me to redefine my relationship with movement and achievement. I've learned to appreciate gentle yoga, swimming, and short walks as my new form of exercise, and have discovered the importance of quality rest as part of my treatment plan.",
+      date: "April 7, 2025",
+      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80",
+      initials: "LC"
+    },
   ],
   "Neurological Pain Conditions": [
     {
@@ -77,6 +104,44 @@ export const stories: StoryCategories = {
       date: "January 5, 2025",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80",
       initials: "MB"
+    },
+    {
+      id: "alex-rodriguez",
+      name: "Alex Rodriguez",
+      condition: "Trigeminal Neuralgia",
+      snippet: "They call trigeminal neuralgia 'the suicide disease' because the pain is so severe and debilitating. Mine started with what I thought were dental problems, until the shooting, electric-like pain began affecting the entire right side of my face. After trying several medications, I finally found relief through a microvascular decompression surgery. I'm now passionate about raising awareness about facial pain conditions that are often invisible to others.",
+      date: "March 17, 2025",
+      image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80",
+      initials: "AR"
+    },
+  ],
+  "Myalgic Encephalomyelitis/Chronic Fatigue Syndrome (ME/CFS)": [
+    {
+      id: "david-walsh",
+      name: "David Walsh",
+      condition: "ME/CFS",
+      snippet: "Before ME/CFS, I was a high-energy software developer who loved hiking on weekends. Now, even small tasks require careful energy management. The post-exertional malaise – where even minimal physical or mental exertion leads to debilitating crashes – has been the hardest symptom to explain to others. I've learned to pace myself meticulously and have found supportive online communities where I don't need to justify my limitations.",
+      date: "January 20, 2025",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80",
+      initials: "DW"
+    },
+    {
+      id: "sophia-patel",
+      name: "Sophia Patel",
+      condition: "ME/CFS",
+      snippet: "My ME/CFS journey began following a severe viral infection in college. As a former athlete, adjusting to severe energy limitations has been challenging. I've had to become an expert in energy conservation, using techniques like the spoon theory to explain my limitations to others. Finding doctors who understand this condition has been difficult, but I'm grateful for my current healthcare team who validate my experience and focus on improving my quality of life.",
+      date: "February 28, 2025",
+      image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80",
+      initials: "SP"
+    },
+    {
+      id: "thomas-miller",
+      name: "Thomas Miller",
+      condition: "ME/CFS",
+      snippet: "Living with ME/CFS for the past decade has forced me to redefine my identity and purpose. As a former teacher who loved active classroom engagement, I've had to find new ways to contribute meaningfully while respecting my physical limitations. Through pacing, medication management, and acceptance, I've built a different but still fulfilling life that includes advocacy work and mentoring others newly diagnosed with this complex condition.",
+      date: "April 3, 2025",
+      image: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80",
+      initials: "TM"
     },
   ],
 };
