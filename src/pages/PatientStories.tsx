@@ -12,13 +12,36 @@ import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
+// Define TypeScript interfaces for our data structures
+interface Condition {
+  id: number;
+  name: string;
+  description: string;
+  details: string;
+  resources: string[];
+}
+
+interface PatientStory {
+  id: string;
+  name: string;
+  condition: string;
+  snippet: string;
+  date: string;
+  image: string;
+  initials: string;
+}
+
+interface StoryCategories {
+  [category: string]: PatientStory[];
+}
+
 const PatientStories = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [openPopoverId, setOpenPopoverId] = useState<string | null>(null);
   const [expandedCondition, setExpandedCondition] = useState<number | null>(null);
   
   // Define conditions (from pain-conditions page)
-  const conditions = [
+  const conditions: Condition[] = [
     {
       id: 1,
       name: "Complex Regional Pain Syndrome (CRPS)",
@@ -43,7 +66,7 @@ const PatientStories = () => {
   ];
 
   // Group stories by condition type
-  const stories = {
+  const stories: StoryCategories = {
     "Complex Regional Pain Syndrome (CRPS)": [
       {
         id: "jane-doe",
