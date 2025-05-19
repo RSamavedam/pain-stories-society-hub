@@ -1,3 +1,4 @@
+
 import Layout from "@/components/Layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Heart } from "lucide-react";
@@ -7,18 +8,18 @@ import PieceByPiece from "@/components/PieceByPiece";
 const About = () => {
   const team = [
     {
-      name: "Dr. Sarah Johnson",
-      role: "Founder & Medical Director",
+      name: "Adyant Shankar",
+      role: "Founder and Patient Advocate",
       bio: "Dr. Johnson is a pain specialist with over 15 years of experience. After witnessing the struggles her patients faced in finding reliable information, she founded the Pain Relief Society.",
     },
     {
-      name: "Michael Chen",
-      role: "Patient Advocate & Co-founder",
+      name: "Dr. Trupti Berde",
+      role: "Pediatric Physical Therapist, Mumbai, India",
       bio: "Living with CRPS since 2010, Michael brings firsthand experience to our mission. He leads our patient story initiatives and community outreach programs.",
     },
     {
-      name: "Emily Williams",
-      role: "Education Coordinator",
+      name: "Dr. Raju Khubchandani",
+      role: "Head of Rheumatology, SRCC Children's Hospital, Mumbai, India",
       bio: "With a background in healthcare education, Emily develops our educational resources and ensures they're accessible to diverse audiences.",
     },
     {
