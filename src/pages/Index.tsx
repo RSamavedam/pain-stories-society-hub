@@ -167,24 +167,23 @@ const Index = () => {
                   <AnimatedSection animationType="fade-up" delay={400} className="mb-6">
                     <div className="flex items-center">
                       <div className="rounded-full bg-pain-100 w-16 h-16 flex items-center justify-center">
-                        <span className="font-medium text-pain-700 text-xl">JD</span>
+                        <span className="font-medium text-pain-700 text-xl">H</span>
                       </div>
                       <div className="ml-4">
-                        <h3 className="font-medium text-lg">Jane Doe</h3>
-                        <p className="text-muted-foreground">Living with CRPS for 7 years</p>
+                        <h3 className="font-medium text-lg">Het</h3>
                       </div>
                     </div>
                   </AnimatedSection>
                   
                   <AnimatedSection animationType="fade-up" delay={600} className="mb-6">
                     <blockquote className="italic text-lg text-muted-foreground leading-relaxed">
-                      "Finding this community changed everything for me. For years, I felt isolated and misunderstood. Learning about others with similar experiences gave me hope and practical strategies that my doctors never mentioned. The simple act of sharing my story and reading others' journeys reminded me that I'm not alone in this fight. On my darkest days, that connection is sometimes all that gets me through."
+                      "Het experienced excruciating pain in his hands. As a result, he went to a local orthopedic specialist who gave him some pain killers. When those medications didn't help, he was recommended to a rheumatologist who have anti-inflammatory medications and steroids as he was diagnosed with rheumatoid arthritis. Finally, when no doctor could figure out what was wrong, he was diagnosed with having a mental disability because everything seemed to be normal physically."
                     </blockquote>
                   </AnimatedSection>
                   
                   <AnimatedSection animationType="fade-up" delay={800}>
-                    <Link to="/patient-stories/jane-doe" className="text-pain-600 hover:underline font-medium inline-flex items-center">
-                      Read Jane's full story
+                    <Link to="/patient-stories/het" className="text-pain-600 hover:underline font-medium inline-flex items-center">
+                      Read Het's full story
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1">
                         <path d="M5 12h14"></path>
                         <path d="m12 5 7 7-7 7"></path>
