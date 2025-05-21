@@ -30,6 +30,13 @@ export const teamMembers: TeamMember[] = [
     initials: "RK"
   },
   {
+    name: "Dr. Lee Sanders",
+    role: "Advisor, Chief of General Pediatrics, Stanford Health Care",
+    bio: "Dr. Sanders is a pediatrician and the Chief of General Pediatrics at Stanford Health Care. He has a special interest in addressing global health inequities.",
+    image: "/lovable-uploads/Lee-Sanders.jpg",
+    initials: "LS"
+  },
+  {
     name: "Raghav Samavedam",
     role: "Technical Advisor",
     bio: "Raghav is a software engineer with a passion for healthcare technology. He ensures our platform is user-friendly and accessible to all.",
