@@ -33,7 +33,7 @@ export const stories: StoryCategories = {
       id: "het",
       name: "Het",
       condition: "CRPS (Hand Pain)",
-      snippet: "Het experienced excruciating pain in his hands. As a result, he went to a local orthopedic specialist who gave him some pain killers. When those medications didn't help, he was recommended to a rheumatologist who have anti-inflammatory medications and steroids as he was diagnosed with rheumatoid arthritis. Finally, when no doctor could figure out what was wrong, he was diagnosed with having a mental disability because everything seemed to be normal physically.",
+      snippet: "Het experienced excruciating pain in his hands. As a result, he went to a local orthopedic specialist who gave him some pain killers. When those medications didn't help, he was recommended to a rheumatologist who gave anti-inflammatory medications and steroids as he was diagnosed with rheumatoid arthritis. Finally, when no doctor could figure out what was wrong, he was diagnosed with having a mental disability because everything seemed to be normal physically.",
       date: "October 10, 2024",
       image: "/lovable-uploads/723aa5ad-402e-426d-9044-bdc0e7e62302.png",
       initials: "H",
@@ -49,7 +49,7 @@ export const stories: StoryCategories = {
         },
         {
           type: "text",
-          content: "When Het was 15 years old, he experienced excruciating pain in his hands. As a result, he went to a local orthopedic specialist who gave him some pain killers. When those medications didn’t help, he was recommended to a rheumatologist who have anti-inflammatory medications and steroids as he was diagnosed with rheumatoid arthritis. Throughout this process he had been hospitalized 3 to 4 times. Even just a touch of a feather would cause an unbelievable amount of pain. Finally, when no doctor could figure out what was wrong, he was diagnosed with having a mental disability because everything seemed to be normal physically."
+          content: "When Het was 15 years old, he experienced excruciating pain in his hands. As a result, he went to a local orthopedic specialist who gave him some pain killers. When those medications didn’t help, he was recommended to a rheumatologist who gave anti-inflammatory medications and steroids as he was diagnosed with rheumatoid arthritis. Throughout this process he had been hospitalized 3 to 4 times. Even just a touch of a feather would cause an unbelievable amount of pain. Finally, when no doctor could figure out what was wrong, he was diagnosed with having a mental disability because everything seemed to be normal physically."
         },
         {
           type: "text",
@@ -65,7 +65,7 @@ export const stories: StoryCategories = {
         },
         {
           type: "text",
-          content: "Now, Het is a _____ year old doing_____."
+          content: "Now, Het is 23 years old and an investment banker."
         },
         {
           type: "text",

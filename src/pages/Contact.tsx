@@ -45,8 +45,8 @@ const Contact = () => {
                     <Mail className="h-5 w-5 text-pain-600 mt-0.5 mr-3" />
                     <div>
                       <p className="font-medium">Email</p>
-                      <a href="mailto:info@painreliefsociety.org" className="text-pain-600 hover:underline">
-                        info@painreliefsociety.org
+                      <a href="mailto:contactus.painreliefsociety@gmail.com" className="text-pain-600 hover:underline">
+                        contactus.painreliefsociety@gmail.com
                       </a>
                     </div>
                   </div>
@@ -84,8 +84,8 @@ const Contact = () => {
                 </p>
                 <div className="flex items-start">
                   <MessageSquare className="h-5 w-5 text-pain-600 mt-0.5 mr-3" />
-                  <a href="mailto:stories@painreliefsociety.org" className="text-pain-600 hover:underline">
-                    stories@painreliefsociety.org
+                  <a href="mailto:contactus.painreliefsociety@gmail.com" className="text-pain-600 hover:underline">
+                    contactus.painreliefsociety@gmail.com
                   </a>
                 </div>
               </CardContent>
