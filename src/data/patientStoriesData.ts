@@ -78,12 +78,7 @@ export const stories: StoryCategories = {
         {
           type: "text",
           content: "Watch some crucial moments of his interview below:"
-        },
-        {
-          type: "youtube",
-          videoId: "dQw4w9WgXcQ",
-          caption: "Het's Interview with Adyant and Dr. Berde"
-        },
+        }
       ]
     },
   ],
