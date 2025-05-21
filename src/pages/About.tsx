@@ -39,17 +39,17 @@ const About = () => {
           
           <AnimatedSection className="prose prose-lg max-w-none mb-16" animationType="fade-up" delay={400}>
             <p>
-              Welcome to our non-profit organization page dedicated to raising awareness and providing for individuals affected by Chronic Pain Conditions. Founded by Adyant Shankar, a Stanford Masters student who experienced the challenges of misdiagnosis and suffered through CRPS, and Trupti Berde, a renowned child physical therapist in Mumbai, India, our mission is to educate the community about these conditions.
+              Welcome to our non-profit organization page dedicated to raising awareness and providing for individuals affected by Rare Pain Conditions. Founded by Adyant Shankar, a Stanford Masters student who experienced the challenges of misdiagnosis and suffered through CRPS, and Trupti Berde, a renowned pediatric physical therapist in Mumbai, India, our mission is to educate the community about these conditions.
             </p>
             <p>
-              We strive to empower those living with chronic pain conditions through advocacy and collaboration with healthcare professionals. Together, we aim to improve the lives of those impacted by such rare disorders.
+              We strive to empower those living with rare pain conditions through advocacy and collaboration with healthcare professionals. Together, we aim to improve the lives of those impacted by such syndromes.
             </p>
             <p>
               Our work is guided by three core principles:
             </p>
             <ul>
-              <li><strong>Information:</strong> Providing evidence-based, accessible information about chronic pain conditions, treatments, and coping strategies.</li>
-              <li><strong>Stories:</strong> Amplifying the voices and experiences of people living with chronic pain to foster understanding and reduce isolation.</li>
+              <li><strong>Information:</strong> Providing evidence-based, accessible information about rare pain conditions, treatments, and coping strategies.</li>
+              <li><strong>Stories:</strong> Amplifying the voices and experiences of people living with rare pain to foster understanding and reduce isolation.</li>
               <li><strong>Hope:</strong> Cultivating a supportive community that empowers individuals to advocate for better care and find ways to thrive despite pain challenges.</li>
             </ul>
           </AnimatedSection>
@@ -93,7 +93,7 @@ const About = () => {
                 </svg>
               </div>
               <h3 className="font-serif text-xl font-medium mb-2">Compassion</h3>
-              <p className="text-muted-foreground">We approach every interaction with empathy and understanding for the unique challenges of living with chronic pain.</p>
+              <p className="text-muted-foreground">We approach every interaction with empathy and understanding for the unique challenges of living with rare pain conditions.</p>
             </div>
             
             <div className="text-center p-6">

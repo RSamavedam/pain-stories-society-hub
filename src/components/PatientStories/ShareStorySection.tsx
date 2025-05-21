@@ -18,7 +18,7 @@ const ShareStorySection = () => {
       <Card className="max-w-3xl mx-auto border border-cream-200 bg-white/90 backdrop-blur-sm p-10 rounded-2xl shadow-lg">
         <h3 className="font-serif text-2xl font-bold mb-4 text-cream-800">Share Your Story</h3>
         <p className="text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
-          Your experience matters. By sharing your story, you help others feel less alone and contribute to a better understanding of chronic pain conditions.
+          Your experience matters. By sharing your story, you help others feel less alone and contribute to a better understanding of rare pain conditions.
         </p>
         <Button asChild className="bg-cream-600 hover:bg-cream-700 text-white px-8 py-6 text-lg font-medium shadow-md hover:shadow-lg transition-all">
           <Link to="/contact">Submit Your Story</Link>

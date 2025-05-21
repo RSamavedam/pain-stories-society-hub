@@ -24,7 +24,7 @@ const Treatments = () => {
           </AnimatedSection>
           <AnimatedSection animationType="fade-up" delay={400}>
             <p className="text-lg text-center max-w-3xl mx-auto text-muted-foreground">
-              Explore different approaches to managing chronic pain conditions.
+              Explore different approaches to managing rare/chronic pain conditions.
             </p>
           </AnimatedSection>
         </div>
