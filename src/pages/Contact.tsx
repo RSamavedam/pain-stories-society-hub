@@ -66,8 +66,8 @@ const Contact = () => {
                     <div>
                       <p className="font-medium">Address</p>
                       <address className="not-italic text-muted-foreground">
-                        123 Healing Street<br />
-                        Wellness City, WC 12345<br />
+                        757 Campus Dr<br />
+                        Stanford, CA 94305<br />
                         United States
                       </address>
                     </div>
