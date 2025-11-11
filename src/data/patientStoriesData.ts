@@ -78,11 +78,67 @@ export const stories: StoryCategories = {
         {
           type: "text",
           content: "Watch some crucial moments of his interview below:"
+        },
+        {
+          type: "youtube",
+          videoId: "IOQoC6Zotb8",
+          caption: "Het's Interview with Us"
         }
+
       ]
     },
   ],
   "Fibromyalgia": [
+    {
+      id: "sai",
+      name: "Sai",
+      condition: "Fibromyalgia",
+      snippet: "Sai experienced excruciating pain after a fever broke. She spent 5 years in pain, away from school, scouring with hope for a treatment to her condition.",
+      date: "November 3, 2024",
+      image: "/lovable-uploads/Sai.jpg",
+      initials: "S",
+      content: [
+        {
+          type: "image",
+          url: "/lovable-uploads/Sai.jpg",
+          caption: "Meet Sai: After 5 years in pain, she has fully recovered and is now workng as a government employee in India."
+        },
+        {
+          type: "text",
+          content: "Meet Sai."
+        },
+        {
+          type: "text",
+          content: "When Sai broke a fever during her high school year, she had thought that the usual rest and recovery mantra would cure her illness and she would be able to go back to school in a few days without any issues. However, it was during this fever that things took a turn for the worse and Sai and her family realized."
+        },
+        {
+          type: "text",
+          content: "As her fever subsided, pain in her arms and legs (a sort of aching pain common during fevers) increased drastically and as she explained “spread across her body.” After 2 months, she consulted doctors in the city of Bangalore, India who assured her that her condition is not of concern and prescribed her with Vitamin D and Calcium tablets, as her levels were low. She had undergone all possible scans and blood tests, as everything came up clear. When nothing seemed to work, she was then prescribed steroids and other allopathic pain-relief medications."
+        },
+        {
+          type: "text",
+          content: "After one year of treatment with allopathic pain-relief medications, she visited a doctor who provided her with a Fibromyalgia diagnosis. However, she was told that the condition is chronic and that there will be no treatment given for her; she will need to manage with her condition. Given this response, she transitioned into seeking Ayurvedic treatments in India while her parents scoured through recommendations of doctors throughout India to find a treatment for Sai."
+        },
+        {
+          type: "text",
+          content: "Sai had difficulty sleeping with her condition, and even stopped going to school after just 6 months of tolerating the pain. She also started becoming depressed. This pain continued on for almost 5 years; she did not even go to college with such pain. She started to tell herself that this was going to be her life in the long-term. However, after these 5 long years, Sai’s cousin Mahati, who is also featured on this website and underwent treatment with Dr. Berde, recommended Sai to come and meet her. Consequently Sai moved to Mumbai and stayed with her relatives for more than a year in hopes of getting proper treatment with Dr. Berde. After this time undergoing physical therapy with Dr. Berde, Sai’s condition improved and began to slowly be able to perform daily life activities. After more than 5 years of pain and not being able to walk for more than 10 minutes, Dr. Berde’s physical therapy treatment allowed her to start moving pain-free."
+        },
+        {
+          type: "text",
+          content: "Now, Sai is extremely happy and living life to the fullest. She was also able to complete her studies and now works in a position in the India government."
+        },
+        {
+          type: "text",
+          content: "Watch her interview as she reveals for the first-time all that she went through as a Fibromyalgia patient below:"
+        },
+        {
+          type: "youtube",
+          videoId: "A-a__IJIchA",
+          caption: "Sai's Interview with Us"
+        }
+
+      ]
+    },
     
   ],
   "Myalgic Encephalomyelitis/Chronic Fatigue Syndrome (ME/CFS)": [
