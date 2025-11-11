@@ -139,6 +139,68 @@ export const stories: StoryCategories = {
 
       ]
     },
+    {
+      id: "mahathi",
+      name: "Mahathi",
+      condition: "Fibromyalgia",
+      snippet: "Mahathi experienced excruciating pain after a fever due to malaria in 2014. While the fever eventually subsided, the body pain that came with it never really went away for years.",
+      date: "December 7, 2024",
+      image: "/lovable-uploads/Mahathi.jpg",
+      initials: "M",
+      content: [
+        {
+          type: "image",
+          url: "/lovable-uploads/Mahathi.jpg",
+          caption: "Meet Mahathi: She was just 15 when she had severe malaria in 2014. The fever eventually subsided, but the body pain that came with it never really went away."
+        },
+        {
+          type: "text",
+          content: "Meet Mahathi."
+        },
+        {
+          type: "text",
+          content: "She was just 15 when she had severe malaria in 2014. The fever eventually subsided, but the body pain that came with it never really went away."
+        },
+        {
+          type: "text",
+          content: "The pain decreased for a while, but by the end of 2015, it came back. She tried everything—allopathy, Ayurveda—but nothing worked. The pain was so bad she couldn't sit, couldn't sleep, couldn't do any physical work. Even walking was difficult."
+        },
+        {
+          type: "text",
+          content: "She had to take a break from school. For a year and a half before anyone could figure out what was wrong, doctors just kept giving her painkillers. They said it was probably just from the malaria, but they couldn't really label it. So they pumped her with pain medications while she went from one specialist to another—orthopedics, neurologists, Ayurvedic practitioners. The pain stayed the same no matter what they tried."
+        },
+        {
+          type: "text",
+          content: "Depression set in. She would cry all the time, feeling so helpless. There were mood swings and that constant question: 'Why only me?' She really missed going to school and felt lonely around others. Her family was devastated too—no one they knew had ever dealt with something like this."
+        },
+        {
+          type: "text",
+          content: "Finally, in 2016, a test showed she had fibromyalgia. She was referred to a rheumatologist, and that's when things started to change."
+        },
+        {
+          type: "text",
+          content: "In January 2017, she started physical therapy. Honestly, she didn't have much hope. 'I thought, Oh, same therapy and treatment like all other times. Nothing will work', she remembers. But slowly, over six months, the pain began to subside. She gained enough confidence to go back to school."
+        },
+        {
+          type: "text",
+          content: "By May 2017, her treatment was done. And she's been pain-free ever since. Today, she's a Master's student in the U.S. Looking back, she wishes more information about rare pain conditions like fibromyalgia and CRPS was available. Better awareness could help identify people with these conditions much faster."
+        },
+        {
+          type: "text",
+          content: "She also wants people to know about the power of physical therapy. 'It's very underestimated in medicine today,' she says. 'I was mostly just given medications. But physical therapy is what actually worked.'"
+        },
+        {
+          type: "text",
+          content: "Watch her interview below:"
+        },
+        {
+          type: "youtube",
+          videoId: "pUoAleyfjSM",
+          caption: "Mahathi's Interview with Us"
+        }
+
+      ]
+    },
     
   ],
   "Myalgic Encephalomyelitis/Chronic Fatigue Syndrome (ME/CFS)": [
