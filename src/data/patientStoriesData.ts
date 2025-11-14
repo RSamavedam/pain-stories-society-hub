@@ -49,11 +49,11 @@ export const stories: StoryCategories = {
         },
         {
           type: "text",
-          content: "When Het was 15 years old, he experienced excruciating pain in his hands. As a result, he went to a local orthopedic specialist who gave him pain killers. When those medications didn’t help, he was recommended to a rheumatologist who gave anti-inflammatory medications and steroids as he was diagnosed with rheumatoid arthritis. Throughout this process he had been hospitalized 3 to 4 times. Even just a touch of a feather would cause an unbelievable amount of pain. Finally, when no doctor could figure out what was wrong, he was diagnosed with having a mental disability because everything seemed to be normal physically."
+          content: "When Het was 15 years old, he experienced excruciating pain in his hands. As a result, he went to a local orthopedic specialist who gave him pain killers. When those medications did not help, he was recommended to a rheumatologist who gave anti-inflammatory medications and steroids as he was diagnosed with rheumatoid arthritis. Throughout this process he had been hospitalized 3 to 4 times. Even just a touch of a feather would cause an unbelievable amount of pain. Finally, when no doctor could figure out what was wrong, he was diagnosed with having a mental disability because everything seemed to be normal physically."
         },
         {
           type: "text",
-          content: "“I was tired, I wasn’t getting a diagnosis ….  Doctors even told my parents I am going to die in 3 to 4 months [because they could not figure out what was wrong]” - Het"
+          content: "“I was tired, I was not getting a diagnosis ….  Doctors even told my parents I am going to die in 3 to 4 months [because they could not figure out what was wrong]” - Het"
         },
         {
           type: "text",
@@ -85,6 +85,71 @@ export const stories: StoryCategories = {
           caption: "Het's Interview with Us"
         }
 
+      ]
+    },
+    {
+      id: "akriti",
+      name: "Akriti",
+      condition: "CRPS (Pain Amplification Syndrome)",
+      snippet: "Akriti got chikungunya in 2019. Like many others, she expected to recover after the fever passed. But the full body pain that came with it refused to go away.",
+      date: "January 5, 2025",
+      image: "/lovable-uploads/Akriti.png",
+      initials: "A",
+      content: [
+        {
+          type: "image",
+          url: "/lovable-uploads/Akriti.png",
+          caption: "Meet Akriti: She has now fully recovered from CRPS and Chikungunya"
+        },
+        {
+          type: "text",
+          content: "Meet Akriti."
+        },
+        {
+          type: "text",
+          content: "Akriti got chikungunya in 2019. Like many others, she expected to recover after the fever passed. But the full body pain that came with it refused to go away."
+        },
+        {
+          type: "text",
+          content: "She went to see orthopedists and rheumatologists. Some said it was arthritis. Others had different theories. By the time they got a proper diagnosis, she and her family had already seen 8-10 doctors."
+        },
+        {
+          type: "text",
+          content: "Her father was especially worried throughout this time. Akriti's mother has been living with arthritis and chronic pain for 35 years, so he knew how devastating long-term pain could be. Watching his daughter unable to get up, eat properly, or even walk brought back all those fears."
+        },
+        {
+          type: "text",
+          content: "The pain was all-consuming. Akriti couldn't sleep, couldn't eat, couldn't walk properly. She missed half a year of school while doctors tried to figure out what was wrong."
+        },
+        {
+          type: "text",
+          content: "Finally, after three months, she was referred to a head rheumatologist in India who immediately recognized what others had missed: CRPS (Complex Regional Pain Syndrome). He recommended physical therapy right away."
+        },
+        {
+          type: "text",
+          content: "Akriti started physical therapy and continued it for 50 days. Slowly, steadily, she got better. And then, she was cured."
+        },
+        {
+          type: "text",
+          content: "Today, she's completely fine. She can even run—something she couldn't have imagined during those dark months of pain."
+        },
+        {
+          type: "text",
+          content: "Looking back, her father has gained an important perspective: doctors need to be more sure about their diagnosis before prescribing treatments. 'Treatments cannot be given as simply like that without a proper diagnosis,' he reflects."
+        },
+        {
+          type: "text",
+          content: "Akriti's story shows how critical accurate diagnosis is for rare pain conditions. When properly identified and treated with the right approach—in her case, physical therapy—even severe conditions like CRPS can be overcome."
+        },
+        {
+          type: "text",
+          content: "Watch her interview with her dad as they reveal her journey to a cure:"
+        },
+        {
+          type: "youtube",
+          videoId: "pV-TOUhFjvA",
+          caption: "Akriti's Interview with Us"
+        },
       ]
     },
   ],
@@ -197,6 +262,10 @@ export const stories: StoryCategories = {
           type: "youtube",
           videoId: "pUoAleyfjSM",
           caption: "Mahathi's Interview with Us"
+        },
+        {
+          type: "text",
+          content: "If you or someone you know is struggling with unexplained chronic pain, don't lose hope. Advocate for yourself, explore all treatment options including physical therapy, and know that a diagnosis—and relief—may be closer than you think."
         }
 
       ]
